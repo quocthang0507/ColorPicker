@@ -25,6 +25,15 @@ namespace ColorSystems
 		/// </summary>
 		public double Black { get; set; }
 
+		public CMYK(RGB rgb)
+		{
+			CMYK cmyk = rgb.ToCmyk();
+			Cyan = cmyk.Cyan;
+			Magenta = cmyk.Magenta;
+			Yellow = cmyk.Yellow;
+			Black = cmyk.Black;
+		}
+
 		public CMYK(double cyan, double magenta, double yellow, double black)
 		{
 			Cyan = cyan;

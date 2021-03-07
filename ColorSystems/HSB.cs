@@ -25,6 +25,14 @@ namespace ColorSystems
 		/// </summary>
 		public double Brightness { get; set; }
 
+		public HSB(RGB rgb)
+		{
+			HSB hsb = rgb.ToHsb();
+			Hue = hsb.Hue;
+			Saturation = hsb.Saturation;
+			Brightness = hsb.Brightness;
+		}
+
 		public HSB(uint hue, double saturation, double brightness)
 		{
 			Hue = hue;
@@ -140,5 +148,6 @@ namespace ColorSystems
 			if (i > 255) return 255;
 			return Convert.ToByte(i);
 		}
+
 	}
 }

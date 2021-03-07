@@ -23,6 +23,14 @@ namespace ColorSystems
 		/// </summary>
 		public double Lightness { get; set; }
 
+		public HSL(RGB rgb)
+		{
+			HSL hsl = rgb.ToHsl();
+			Hue = hsl.Hue;
+			Saturation = hsl.Saturation;
+			Lightness = hsl.Lightness;
+		}
+
 		public HSL(uint hue, double saturation, double lightness)
 		{
 			Hue = hue;

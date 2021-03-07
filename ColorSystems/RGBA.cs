@@ -14,6 +14,11 @@ namespace ColorSystems
 		public override byte Blue { get => base.Blue; set => base.Blue = value; }
 		public double Alpha { get; set; }
 
+		public RGBA(RGB rgb) : base(rgb.Red, rgb.Green, rgb.Blue)
+		{
+			this.Alpha = 1.0;
+		}
+
 		public RGBA(byte red, byte green, byte blue, double alpha) : base(red, green, blue)
 		{
 			this.Alpha = alpha;
