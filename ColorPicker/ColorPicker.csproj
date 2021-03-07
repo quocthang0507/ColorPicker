@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>color_icon.ico</ApplicationIcon>
+    <Authors>La Quoc Thang</Authors>
+    <PackageIcon>color_png.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ColorSystems\ColorSystems.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\quoct\Downloads\color_png.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
