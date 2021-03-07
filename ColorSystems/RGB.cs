@@ -42,7 +42,7 @@ namespace ColorSystems
 			Blue = byte.Parse(blueInHex, System.Globalization.NumberStyles.HexNumber);
 		}
 
-		public Color ToColor()
+		public virtual Color ToColor()
 		{
 			return Color.FromArgb(Red, Green, Blue);
 		}

@@ -1,4 +1,6 @@
-﻿namespace ColorSystems
+﻿using System.Drawing;
+
+namespace ColorSystems
 {
 	/// <summary>
 	/// The HSL color space, also called HLS or HSI , stands for:
@@ -55,6 +57,12 @@
 			g = (byte)(double_g * 255.0);
 			b = (byte)(double_b * 255.0);
 			return new RGB(r, g, b);
+		}
+
+		public Color ToColor()
+		{
+			RGB rgb = ToRgb();
+			return Color.FromArgb(rgb.Red, rgb.Green, rgb.Blue);
 		}
 
 		private static double QqhToRgb(double q1, double q2, double hue)
