@@ -110,8 +110,7 @@ namespace ColorSystems
 
 		public HSB ToHsb()
 		{
-			byte r = Red, g = Green, b = Blue;
-			double rabs, gabs, babs, rr, gg, bb, h = 0, s, v, diff;
+			double r = Red, g = Green, b = Blue, rabs, gabs, babs, rr, gg, bb, h = 0, s, v, diff;
 			rabs = r / 255;
 			gabs = g / 255;
 			babs = b / 255;
