@@ -93,7 +93,8 @@ namespace ColorPicker
 			this.trackRedGB = new System.Windows.Forms.TrackBar();
 			this.trackRGreenB = new System.Windows.Forms.TrackBar();
 			this.trackRGBlue = new System.Windows.Forms.TrackBar();
-			this.colorPanel = new System.Windows.Forms.Panel();
+			this.panelColor = new System.Windows.Forms.Panel();
+			this.lblHexColor = new System.Windows.Forms.Label();
 			this.tableMain.SuspendLayout();
 			this.tableColorSystems.SuspendLayout();
 			this.gbxHSL.SuspendLayout();
@@ -123,6 +124,7 @@ namespace ColorPicker
 			((System.ComponentModel.ISupportInitialize)(this.trackRedGB)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGreenB)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGBlue)).BeginInit();
+			this.panelColor.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableMain
@@ -130,7 +132,7 @@ namespace ColorPicker
 			this.tableMain.ColumnCount = 1;
 			this.tableMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableMain.Controls.Add(this.tableColorSystems, 0, 0);
-			this.tableMain.Controls.Add(this.colorPanel, 0, 1);
+			this.tableMain.Controls.Add(this.panelColor, 0, 1);
 			this.tableMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableMain.Location = new System.Drawing.Point(0, 0);
 			this.tableMain.Name = "tableMain";
@@ -860,13 +862,25 @@ namespace ColorPicker
 			this.trackRGBlue.Size = new System.Drawing.Size(80, 45);
 			this.trackRGBlue.TabIndex = 13;
 			// 
-			// colorPanel
+			// panelColor
 			// 
-			this.colorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.colorPanel.Location = new System.Drawing.Point(3, 233);
-			this.colorPanel.Name = "colorPanel";
-			this.colorPanel.Size = new System.Drawing.Size(978, 225);
-			this.colorPanel.TabIndex = 1;
+			this.panelColor.Controls.Add(this.lblHexColor);
+			this.panelColor.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelColor.Location = new System.Drawing.Point(3, 233);
+			this.panelColor.Name = "panelColor";
+			this.panelColor.Size = new System.Drawing.Size(978, 225);
+			this.panelColor.TabIndex = 1;
+			// 
+			// lblHexColor
+			// 
+			this.lblHexColor.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblHexColor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.lblHexColor.Location = new System.Drawing.Point(0, 0);
+			this.lblHexColor.Name = "lblHexColor";
+			this.lblHexColor.Size = new System.Drawing.Size(978, 225);
+			this.lblHexColor.TabIndex = 0;
+			this.lblHexColor.Text = "#";
+			this.lblHexColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// MainForm
 			// 
@@ -916,6 +930,7 @@ namespace ColorPicker
 			((System.ComponentModel.ISupportInitialize)(this.trackRedGB)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGreenB)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGBlue)).EndInit();
+			this.panelColor.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -985,7 +1000,8 @@ namespace ColorPicker
 		private System.Windows.Forms.TrackBar trackCMagentaYK;
 		private System.Windows.Forms.TrackBar trackCMYellowK;
 		private System.Windows.Forms.TextBox tbxRGBAlpha;
-		private System.Windows.Forms.Panel colorPanel;
+		private System.Windows.Forms.Panel panelColor;
+		private System.Windows.Forms.Label lblHexColor;
 	}
 }
 

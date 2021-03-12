@@ -14,7 +14,6 @@ namespace ColorPicker
 		private CMYK CMYK;
 		private HSB HSB;
 		private HSL HSL;
-		private bool shouldFireEvents = true;
 
 		public MainForm()
 		{
@@ -26,6 +25,9 @@ namespace ColorPicker
 		{
 		}
 
+		/// <summary>
+		/// Đăng ký sự kiện từng cặp trackBar và textBox một
+		/// </summary>
 		private void RegisterControls()
 		{
 			var trackBarControls = GetAll(this, typeof(TrackBar)).ToList();
@@ -55,6 +57,22 @@ namespace ColorPicker
 					{
 						FromRGBToUpdateAll();
 					}
+					//else if (CheckWhichGroupBoxOwns(trackBar, gbxRGBA))
+					//{
+					//	FromRGBAToUpdateAll();
+					//}
+					//else if (CheckWhichGroupBoxOwns(trackBar, gbxCMYK))
+					//{
+					//	FromCMYKToUpdateAll();
+					//}
+					//else if (CheckWhichGroupBoxOwns(trackBar, gbxHSB))
+					//{
+					//	FromHSBToUpdateAll();
+					//}
+					//else if (CheckWhichGroupBoxOwns(trackBar, gbxHSL))
+					//{
+					//	FromHSLToUpdateAll();
+					//}
 				}
 
 				void TextBox_TextChanged(object sender, EventArgs e)
@@ -72,28 +90,28 @@ namespace ColorPicker
 
 		}
 
-		private IEnumerable<Control> GetAll(Control control, Type type)
+		/// <summary>
+		/// Lấy tất cả các control con nằm trong control cha bằng đệ quy
+		/// </summary>
+		/// <param name="parentControl">Control cha</param>
+		/// <param name="typeOfChild">Kiểu của control con cần tìm</param>
+		/// <returns></returns>
+		private IEnumerable<Control> GetAll(Control parentControl, Type typeOfChild)
 		{
-			var controls = control.Controls.Cast<Control>();
+			var controls = parentControl.Controls.Cast<Control>();
 
-			return controls.SelectMany(ctrl => GetAll(ctrl, type))
+			return controls.SelectMany(ctrl => GetAll(ctrl, typeOfChild))
 									  .Concat(controls)
-									  .Where(c => c.GetType() == type);
+									  .Where(c => c.GetType() == typeOfChild);
 		}
 
-		private void UpdateColorSystems()
-		{
-			//RGBA = new RGBA((byte)trackRedGBA.Value, (byte)trackRGreenBA.Value, (byte)trackRGBlueA.Value, (byte)trackRGBAlpha.Value);
-			//RGB = new RGB((byte)trackRedGB.Value, (byte)trackRGreenB.Value, (byte)trackRGBlue.Value);
-			//CMYK = new CMYK(trackCyanMYK.Value, trackCMagentaYK.Value, trackCMYellowK.Value, trackCMYblacK.Value);
-			//HSB = new HSB((uint)trackHueSB.Value, trackHSaturationB.Value, trackHSBrightness.Value);
-			//HSL = new HSL((uint)trackHueSL.Value, trackHSaturationL.Value, trackHSLightness.Value);
-
-		}
-
+		/// <summary>
+		/// Từ RGB cập nhật các mã màu còn lại
+		/// </summary>
 		private void FromRGBToUpdateAll()
 		{
 			RGB = new RGB((byte)trackRedGB.Value, (byte)trackRGreenB.Value, (byte)trackRGBlue.Value);
+
 			RGBA = new RGBA(RGB);
 			UpdateColorSystem(typeof(RGBA).Name);
 			CMYK = new CMYK(RGB);
@@ -102,11 +120,85 @@ namespace ColorPicker
 			UpdateColorSystem(typeof(HSL).Name);
 			HSB = new HSB(RGB);
 			UpdateColorSystem(typeof(HSB).Name);
+
+			panelColor.BackColor = RGB.ToColor();
+			lblHexColor.Text = $"#{RGB.ToHex()}";
 		}
 
+		/// <summary>
+		/// Từ RGBA cập nhật các mã màu còn lại
+		/// </summary>
+		private void FromRGBAToUpdateAll()
+		{
+			RGBA = new RGBA((byte)trackRedGBA.Value, (byte)trackRGreenBA.Value, (byte)trackRGBlueA.Value, (byte)trackRGBAlpha.Value);
+
+			RGB = RGBA.ToRgb();
+			UpdateColorSystem(typeof(RGB).Name);
+			CMYK = new CMYK(RGB);
+			UpdateColorSystem(typeof(CMYK).Name);
+			HSL = new HSL(RGB);
+			UpdateColorSystem(typeof(HSL).Name);
+			HSB = new HSB(RGB);
+			UpdateColorSystem(typeof(HSB).Name);
+		}
+
+		/// <summary>
+		/// Từ CMYK cập nhật các mã màu còn lại
+		/// </summary>
+		private void FromCMYKToUpdateAll()
+		{
+			CMYK = new CMYK(trackCyanMYK.Value, trackCMagentaYK.Value, trackCMYellowK.Value, trackCMYblacK.Value);
+
+			RGB = CMYK.ToRgb();
+			UpdateColorSystem(typeof(RGB).Name);
+			RGBA = new RGBA(RGB);
+			UpdateColorSystem(typeof(RGBA).Name);
+			HSL = new HSL(RGB);
+			UpdateColorSystem(typeof(HSL).Name);
+			HSB = new HSB(RGB);
+			UpdateColorSystem(typeof(HSB).Name);
+		}
+
+		/// <summary>
+		/// Từ HSL cập nhật các mã màu còn lại
+		/// </summary>
+		private void FromHSLToUpdateAll()
+		{
+			HSL = new HSL((uint)trackHueSL.Value, trackHSaturationL.Value, trackHSLightness.Value);
+
+			RGB = HSL.ToRgb();
+			UpdateColorSystem(typeof(RGB).Name);
+			RGBA = new RGBA(RGB);
+			UpdateColorSystem(typeof(RGBA).Name);
+			CMYK = new CMYK(RGB);
+			UpdateColorSystem(typeof(CMYK).Name);
+			HSB = new HSB(RGB);
+			UpdateColorSystem(typeof(HSB).Name);
+		}
+
+		/// <summary>
+		/// Từ HSB cập nhật các mã màu còn lại
+		/// </summary>
+		private void FromHSBToUpdateAll()
+		{
+			HSB = new HSB((uint)trackHueSB.Value, trackHSaturationB.Value, trackHSBrightness.Value);
+
+			RGB = HSB.ToRgb();
+			UpdateColorSystem(typeof(RGB).Name);
+			RGBA = new RGBA(RGB);
+			UpdateColorSystem(typeof(RGBA).Name);
+			CMYK = new CMYK(RGB);
+			UpdateColorSystem(typeof(CMYK).Name);
+			HSL = new HSL(RGB);
+			UpdateColorSystem(typeof(HSL).Name);
+		}
+
+		/// <summary>
+		/// Cập nhật các trackBar khác dựa trên mã màu sysColorName bị thay đổi
+		/// </summary>
+		/// <param name="sysColorName">Mã màu bị thay đổi</param>
 		private void UpdateColorSystem(string sysColorName)
 		{
-			shouldFireEvents = false;
 			switch (sysColorName)
 			{
 				case "RGBA":
@@ -139,9 +231,14 @@ namespace ColorPicker
 				default:
 					break;
 			}
-			shouldFireEvents = true;
 		}
 
+		/// <summary>
+		/// Kiểm tra control thuộc groupbox nào
+		/// </summary>
+		/// <param name="control">Control con</param>
+		/// <param name="groupBox">Groupbox cha</param>
+		/// <returns></returns>
 		private bool CheckWhichGroupBoxOwns(Control control, GroupBox groupBox)
 		{
 			var controls = GetAll(groupBox, control.GetType());
