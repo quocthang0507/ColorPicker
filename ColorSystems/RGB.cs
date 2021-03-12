@@ -49,11 +49,15 @@ namespace ColorSystems
 
 		public CMYK ToCmyk()
 		{
-			double black = Math.Min(1.0 - Red / 255.0, Math.Min(1.0 - Green / 255.0, 1.0 - Blue / 255.0));
-			double cyan = (1.0 - (Red / 255.0) - black) / (1.0 - black);
-			double magenta = (1.0 - (Green / 255.0) - black) / (1.0 - black);
-			double yellow = (1.0 - (Blue / 255.0) - black) / (1.0 - black);
-			return new CMYK(cyan, magenta, yellow, black);
+			double black = Math.Min(1f - Red / 255f, Math.Min(1f - Green / 255f, 1f - Blue / 255f));
+			if (black != 1f)
+			{
+				double cyan = (1f - (Red / 255f) - black) / (1f - black);
+				double magenta = (1f - (Green / 255f) - black) / (1f - black);
+				double yellow = (1f - (Blue / 255f) - black) / (1f - black);
+				return new CMYK(cyan, magenta, yellow, black);
+			}
+			return new CMYK(0, 0, 0, black);
 		}
 
 		public string ToHex()

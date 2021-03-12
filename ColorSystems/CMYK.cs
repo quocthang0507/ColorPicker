@@ -32,6 +32,8 @@ namespace ColorSystems
 			Magenta = cmyk.Magenta;
 			Yellow = cmyk.Yellow;
 			Black = cmyk.Black;
+			if (double.IsNaN(Cyan))
+				throw new Exception();
 		}
 
 		public CMYK(double cyan, double magenta, double yellow, double black)

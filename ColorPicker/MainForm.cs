@@ -1,6 +1,7 @@
 ﻿using ColorSystems;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -23,6 +24,7 @@ namespace ColorPicker
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
+			FromRGBToUpdateAll();
 		}
 
 		/// <summary>
@@ -123,6 +125,7 @@ namespace ColorPicker
 
 			panelColor.BackColor = RGB.ToColor();
 			lblHexColor.Text = $"#{RGB.ToHex()}";
+			lblHexColor.ForeColor = HSB.Brightness > 0.5 ? Color.Black : Color.White;
 		}
 
 		/// <summary>
