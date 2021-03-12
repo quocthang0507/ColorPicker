@@ -160,8 +160,8 @@ namespace ColorSystems
 			}
 			return new HSB(
 			Convert.ToUInt32(Math.Round(h * 360)),
-			percentRoundFn(s * 100),
-			percentRoundFn(v * 100));
+			percentRoundFn(s),
+			percentRoundFn(v));
 		}
 
 		public RGBA ToRgba()

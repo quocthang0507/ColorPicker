@@ -15,7 +15,7 @@ namespace ColorSystems
 		/// </summary>
 		public uint Hue { get; set; }
 		/// <summary>
-		/// Ranges from 0 to 100% (from the center of the black&white axis).
+		/// Ranges from 0 to 100% (from the center of the black & white axis).
 		/// </summary>
 		public double Saturation { get; set; }
 		/// <summary>

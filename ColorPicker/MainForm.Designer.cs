@@ -32,7 +32,7 @@ namespace ColorPicker
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.tableMain = new System.Windows.Forms.TableLayoutPanel();
 			this.tableColorSystems = new System.Windows.Forms.TableLayoutPanel();
-			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.gbxHSL = new System.Windows.Forms.GroupBox();
 			this.tableHSL = new System.Windows.Forms.TableLayoutPanel();
 			this.label15 = new System.Windows.Forms.Label();
 			this.label16 = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@ namespace ColorPicker
 			this.trackHueSL = new System.Windows.Forms.TrackBar();
 			this.trackHSaturationL = new System.Windows.Forms.TrackBar();
 			this.trackHSLightness = new System.Windows.Forms.TrackBar();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.gbxHSB = new System.Windows.Forms.GroupBox();
 			this.tableHSB = new System.Windows.Forms.TableLayoutPanel();
 			this.label12 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@ namespace ColorPicker
 			this.trackHueSB = new System.Windows.Forms.TrackBar();
 			this.trackHSaturationB = new System.Windows.Forms.TrackBar();
 			this.trackHSBrightness = new System.Windows.Forms.TrackBar();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.gbxCMYK = new System.Windows.Forms.GroupBox();
 			this.tableCMYK = new System.Windows.Forms.TableLayoutPanel();
 			this.tbxCMYblacK = new System.Windows.Forms.TextBox();
 			this.trackCMYblacK = new System.Windows.Forms.TrackBar();
@@ -68,7 +68,7 @@ namespace ColorPicker
 			this.trackCyanMYK = new System.Windows.Forms.TrackBar();
 			this.trackCMagentaYK = new System.Windows.Forms.TrackBar();
 			this.trackCMYellowK = new System.Windows.Forms.TrackBar();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.gbxRGBA = new System.Windows.Forms.GroupBox();
 			this.tableRGBA = new System.Windows.Forms.TableLayoutPanel();
 			this.tbxRGBAlpha = new System.Windows.Forms.TextBox();
 			this.trackRGBAlpha = new System.Windows.Forms.TrackBar();
@@ -82,7 +82,7 @@ namespace ColorPicker
 			this.trackRedGBA = new System.Windows.Forms.TrackBar();
 			this.trackRGreenBA = new System.Windows.Forms.TrackBar();
 			this.trackRGBlueA = new System.Windows.Forms.TrackBar();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.gbxRGB = new System.Windows.Forms.GroupBox();
 			this.tableRGB = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -93,31 +93,32 @@ namespace ColorPicker
 			this.trackRedGB = new System.Windows.Forms.TrackBar();
 			this.trackRGreenB = new System.Windows.Forms.TrackBar();
 			this.trackRGBlue = new System.Windows.Forms.TrackBar();
+			this.colorPanel = new System.Windows.Forms.Panel();
 			this.tableMain.SuspendLayout();
 			this.tableColorSystems.SuspendLayout();
-			this.groupBox5.SuspendLayout();
+			this.gbxHSL.SuspendLayout();
 			this.tableHSL.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackHueSL)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackHSaturationL)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackHSLightness)).BeginInit();
-			this.groupBox4.SuspendLayout();
+			this.gbxHSB.SuspendLayout();
 			this.tableHSB.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackHueSB)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackHSaturationB)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackHSBrightness)).BeginInit();
-			this.groupBox3.SuspendLayout();
+			this.gbxCMYK.SuspendLayout();
 			this.tableCMYK.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackCMYblacK)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackCyanMYK)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackCMagentaYK)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackCMYellowK)).BeginInit();
-			this.groupBox2.SuspendLayout();
+			this.gbxRGBA.SuspendLayout();
 			this.tableRGBA.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGBAlpha)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRedGBA)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGreenBA)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGBlueA)).BeginInit();
-			this.groupBox1.SuspendLayout();
+			this.gbxRGB.SuspendLayout();
 			this.tableRGB.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackRedGB)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGreenB)).BeginInit();
@@ -129,6 +130,7 @@ namespace ColorPicker
 			this.tableMain.ColumnCount = 1;
 			this.tableMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableMain.Controls.Add(this.tableColorSystems, 0, 0);
+			this.tableMain.Controls.Add(this.colorPanel, 0, 1);
 			this.tableMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableMain.Location = new System.Drawing.Point(0, 0);
 			this.tableMain.Name = "tableMain";
@@ -146,30 +148,30 @@ namespace ColorPicker
 			this.tableColorSystems.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
 			this.tableColorSystems.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
 			this.tableColorSystems.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableColorSystems.Controls.Add(this.groupBox5, 0, 0);
-			this.tableColorSystems.Controls.Add(this.groupBox4, 0, 0);
-			this.tableColorSystems.Controls.Add(this.groupBox3, 0, 0);
-			this.tableColorSystems.Controls.Add(this.groupBox2, 0, 0);
-			this.tableColorSystems.Controls.Add(this.groupBox1, 0, 0);
+			this.tableColorSystems.Controls.Add(this.gbxHSL, 0, 0);
+			this.tableColorSystems.Controls.Add(this.gbxHSB, 0, 0);
+			this.tableColorSystems.Controls.Add(this.gbxCMYK, 0, 0);
+			this.tableColorSystems.Controls.Add(this.gbxRGBA, 0, 0);
+			this.tableColorSystems.Controls.Add(this.gbxRGB, 0, 0);
 			this.tableColorSystems.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableColorSystems.Location = new System.Drawing.Point(3, 3);
 			this.tableColorSystems.Name = "tableColorSystems";
 			this.tableColorSystems.RowCount = 1;
 			this.tableColorSystems.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableColorSystems.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableColorSystems.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 224F));
 			this.tableColorSystems.Size = new System.Drawing.Size(978, 224);
 			this.tableColorSystems.TabIndex = 0;
 			// 
-			// groupBox5
+			// gbxHSL
 			// 
-			this.groupBox5.Controls.Add(this.tableHSL);
-			this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox5.Location = new System.Drawing.Point(588, 3);
-			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(189, 218);
-			this.groupBox5.TabIndex = 8;
-			this.groupBox5.TabStop = false;
-			this.groupBox5.Text = "HSL";
+			this.gbxHSL.Controls.Add(this.tableHSL);
+			this.gbxHSL.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.gbxHSL.Location = new System.Drawing.Point(588, 3);
+			this.gbxHSL.Name = "gbxHSL";
+			this.gbxHSL.Size = new System.Drawing.Size(189, 218);
+			this.gbxHSL.TabIndex = 8;
+			this.gbxHSL.TabStop = false;
+			this.gbxHSL.Text = "HSL";
 			// 
 			// tableHSL
 			// 
@@ -262,8 +264,8 @@ namespace ColorPicker
 			// trackHueSL
 			// 
 			this.trackHueSL.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.trackHueSL.LargeChange = 360;
 			this.trackHueSL.Location = new System.Drawing.Point(73, 10);
+			this.trackHueSL.Maximum = 360;
 			this.trackHueSL.Name = "trackHueSL";
 			this.trackHueSL.Size = new System.Drawing.Size(70, 45);
 			this.trackHueSL.TabIndex = 23;
@@ -286,16 +288,16 @@ namespace ColorPicker
 			this.trackHSLightness.Size = new System.Drawing.Size(70, 45);
 			this.trackHSLightness.TabIndex = 27;
 			// 
-			// groupBox4
+			// gbxHSB
 			// 
-			this.groupBox4.Controls.Add(this.tableHSB);
-			this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox4.Location = new System.Drawing.Point(783, 3);
-			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(192, 218);
-			this.groupBox4.TabIndex = 7;
-			this.groupBox4.TabStop = false;
-			this.groupBox4.Text = "HSB (or HSV)";
+			this.gbxHSB.Controls.Add(this.tableHSB);
+			this.gbxHSB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.gbxHSB.Location = new System.Drawing.Point(783, 3);
+			this.gbxHSB.Name = "gbxHSB";
+			this.gbxHSB.Size = new System.Drawing.Size(192, 218);
+			this.gbxHSB.TabIndex = 7;
+			this.gbxHSB.TabStop = false;
+			this.gbxHSB.Text = "HSB (or HSV)";
 			// 
 			// tableHSB
 			// 
@@ -412,16 +414,16 @@ namespace ColorPicker
 			this.trackHSBrightness.Size = new System.Drawing.Size(72, 45);
 			this.trackHSBrightness.TabIndex = 33;
 			// 
-			// groupBox3
+			// gbxCMYK
 			// 
-			this.groupBox3.Controls.Add(this.tableCMYK);
-			this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox3.Location = new System.Drawing.Point(393, 3);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(189, 218);
-			this.groupBox3.TabIndex = 6;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "CMYK";
+			this.gbxCMYK.Controls.Add(this.tableCMYK);
+			this.gbxCMYK.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.gbxCMYK.Location = new System.Drawing.Point(393, 3);
+			this.gbxCMYK.Name = "gbxCMYK";
+			this.gbxCMYK.Size = new System.Drawing.Size(189, 218);
+			this.gbxCMYK.TabIndex = 6;
+			this.gbxCMYK.TabStop = false;
+			this.gbxCMYK.Text = "CMYK";
 			// 
 			// tableCMYK
 			// 
@@ -572,16 +574,16 @@ namespace ColorPicker
 			this.trackCMYellowK.Size = new System.Drawing.Size(70, 43);
 			this.trackCMYellowK.TabIndex = 19;
 			// 
-			// groupBox2
+			// gbxRGBA
 			// 
-			this.groupBox2.Controls.Add(this.tableRGBA);
-			this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox2.Location = new System.Drawing.Point(3, 3);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(189, 218);
-			this.groupBox2.TabIndex = 5;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "RGBA";
+			this.gbxRGBA.Controls.Add(this.tableRGBA);
+			this.gbxRGBA.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.gbxRGBA.Location = new System.Drawing.Point(3, 3);
+			this.gbxRGBA.Name = "gbxRGBA";
+			this.gbxRGBA.Size = new System.Drawing.Size(189, 218);
+			this.gbxRGBA.TabIndex = 5;
+			this.gbxRGBA.TabStop = false;
+			this.gbxRGBA.Text = "RGBA";
 			// 
 			// tableRGBA
 			// 
@@ -732,16 +734,16 @@ namespace ColorPicker
 			this.trackRGBlueA.Size = new System.Drawing.Size(77, 43);
 			this.trackRGBlueA.TabIndex = 5;
 			// 
-			// groupBox1
+			// gbxRGB
 			// 
-			this.groupBox1.Controls.Add(this.tableRGB);
-			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox1.Location = new System.Drawing.Point(198, 3);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(189, 218);
-			this.groupBox1.TabIndex = 0;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "RGB";
+			this.gbxRGB.Controls.Add(this.tableRGB);
+			this.gbxRGB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.gbxRGB.Location = new System.Drawing.Point(198, 3);
+			this.gbxRGB.Name = "gbxRGB";
+			this.gbxRGB.Size = new System.Drawing.Size(189, 218);
+			this.gbxRGB.TabIndex = 0;
+			this.gbxRGB.TabStop = false;
+			this.gbxRGB.Text = "RGB";
 			// 
 			// tableRGB
 			// 
@@ -858,6 +860,14 @@ namespace ColorPicker
 			this.trackRGBlue.Size = new System.Drawing.Size(80, 45);
 			this.trackRGBlue.TabIndex = 13;
 			// 
+			// colorPanel
+			// 
+			this.colorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.colorPanel.Location = new System.Drawing.Point(3, 233);
+			this.colorPanel.Name = "colorPanel";
+			this.colorPanel.Size = new System.Drawing.Size(978, 225);
+			this.colorPanel.TabIndex = 1;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -874,33 +884,33 @@ namespace ColorPicker
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.tableMain.ResumeLayout(false);
 			this.tableColorSystems.ResumeLayout(false);
-			this.groupBox5.ResumeLayout(false);
+			this.gbxHSL.ResumeLayout(false);
 			this.tableHSL.ResumeLayout(false);
 			this.tableHSL.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackHueSL)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackHSaturationL)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackHSLightness)).EndInit();
-			this.groupBox4.ResumeLayout(false);
+			this.gbxHSB.ResumeLayout(false);
 			this.tableHSB.ResumeLayout(false);
 			this.tableHSB.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackHueSB)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackHSaturationB)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackHSBrightness)).EndInit();
-			this.groupBox3.ResumeLayout(false);
+			this.gbxCMYK.ResumeLayout(false);
 			this.tableCMYK.ResumeLayout(false);
 			this.tableCMYK.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackCMYblacK)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackCyanMYK)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackCMagentaYK)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackCMYellowK)).EndInit();
-			this.groupBox2.ResumeLayout(false);
+			this.gbxRGBA.ResumeLayout(false);
 			this.tableRGBA.ResumeLayout(false);
 			this.tableRGBA.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGBAlpha)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRedGBA)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGreenBA)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGBlueA)).EndInit();
-			this.groupBox1.ResumeLayout(false);
+			this.gbxRGB.ResumeLayout(false);
 			this.tableRGB.ResumeLayout(false);
 			this.tableRGB.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackRedGB)).EndInit();
@@ -914,7 +924,7 @@ namespace ColorPicker
 
 		private System.Windows.Forms.TableLayoutPanel tableMain;
 		private System.Windows.Forms.TableLayoutPanel tableColorSystems;
-		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.GroupBox gbxRGB;
 		private System.Windows.Forms.TableLayoutPanel tableRGB;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
@@ -925,7 +935,7 @@ namespace ColorPicker
 		private System.Windows.Forms.TrackBar trackRedGB;
 		private System.Windows.Forms.TrackBar trackRGreenB;
 		private System.Windows.Forms.TrackBar trackRGBlue;
-		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.GroupBox gbxRGBA;
 		private System.Windows.Forms.TableLayoutPanel tableRGBA;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
@@ -938,7 +948,7 @@ namespace ColorPicker
 		private System.Windows.Forms.TrackBar trackRGBlueA;
 		private System.Windows.Forms.TrackBar trackRGBAlpha;
 		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.GroupBox groupBox5;
+		private System.Windows.Forms.GroupBox gbxHSL;
 		private System.Windows.Forms.TableLayoutPanel tableHSL;
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.Label label16;
@@ -949,7 +959,7 @@ namespace ColorPicker
 		private System.Windows.Forms.TrackBar trackHueSL;
 		private System.Windows.Forms.TrackBar trackHSaturationL;
 		private System.Windows.Forms.TrackBar trackHSLightness;
-		private System.Windows.Forms.GroupBox groupBox4;
+		private System.Windows.Forms.GroupBox gbxHSB;
 		private System.Windows.Forms.TableLayoutPanel tableHSB;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label13;
@@ -960,7 +970,7 @@ namespace ColorPicker
 		private System.Windows.Forms.TrackBar trackHueSB;
 		private System.Windows.Forms.TrackBar trackHSaturationB;
 		private System.Windows.Forms.TrackBar trackHSBrightness;
-		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.GroupBox gbxCMYK;
 		private System.Windows.Forms.TableLayoutPanel tableCMYK;
 		private System.Windows.Forms.TextBox tbxCMYblacK;
 		private System.Windows.Forms.TrackBar trackCMYblacK;
@@ -975,6 +985,7 @@ namespace ColorPicker
 		private System.Windows.Forms.TrackBar trackCMagentaYK;
 		private System.Windows.Forms.TrackBar trackCMYellowK;
 		private System.Windows.Forms.TextBox tbxRGBAlpha;
+		private System.Windows.Forms.Panel colorPanel;
 	}
 }
 
