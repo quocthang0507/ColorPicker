@@ -21,18 +21,15 @@ namespace ColorPicker
 		public MainForm()
 		{
 			InitializeComponent();
+			new Thread(() =>
+			{
+				RegisterControls();
+				ShowKnownColors();
+			}).Start();
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			new Thread(() =>
-			{
-				Invoke((MethodInvoker)delegate ()
-				{
-					RegisterControls();
-					ShowKnownColors();
-				});
-			}).Start();
 			UpdateFromRGBToAll();
 		}
 
@@ -60,7 +57,7 @@ namespace ColorPicker
 			// draw the text of the list item, not doing this will only show
 			// the background color
 			// you will need to get the text of item to display
-			graphics.DrawString($"{colorName} (#{ColorHelper.GetHexFromColor(backgroundColor)})", e.Font, new SolidBrush(textColor), new PointF(e.Bounds.X, e.Bounds.Y));
+			graphics.DrawString($"{colorName} (#{ColorHelper.GetHexFromColor(backgroundColor)})", e.Font, new SolidBrush(textColor), new PointF(e.Bounds.X, e.Bounds.Y + 3));
 
 			e.DrawFocusRectangle();
 		}
@@ -85,6 +82,33 @@ namespace ColorPicker
 		{
 			Clipboard.SetText(RGB.ToHex());
 			MessageBox.Show("Copied to clipboard successfully", "Copied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		/// <summary>
+		/// https://social.msdn.microsoft.com/Forums/windows/en-US/60767912-6ea4-4ff6-acb5-44002bd94e82/how-to-change-border-color-of-groupbox-in-cnet
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void gbxRGB_Paint(object sender, PaintEventArgs e)
+		{
+			GroupBox box = (GroupBox)sender;
+			e.Graphics.Clear(SystemColors.Control);
+
+			// Vẽ lại viền
+			Size tSize = TextRenderer.MeasureText(box.Text, box.Font);
+			Rectangle borderRect = e.ClipRectangle;
+			borderRect.Y += tSize.Height / 2;
+			borderRect.Height -= tSize.Height / 2;
+			ControlPaint.DrawBorder(e.Graphics, borderRect, Color.Black, ButtonBorderStyle.Solid);
+
+			Rectangle textRect = e.ClipRectangle;
+			textRect.X += 5;
+			textRect.Width = tSize.Width;
+			textRect.Height = tSize.Height;
+			e.Graphics.FillRectangle(new SolidBrush(BackColor), textRect);
+
+			// Ghi chữ
+			e.Graphics.DrawString(box.Text, box.Font, Brushes.Black, 5, 0);
 		}
 
 		private void btnPick_Click(object sender, EventArgs e)
@@ -122,25 +146,28 @@ namespace ColorPicker
 				void TrackBar_ValueChanged(object sender, EventArgs e)
 				{
 					textBox.Text = trackBar.Value.ToString();
-					if (CheckWhichGroupBoxOwns(trackBar, gbxRGB))
+					if (userChanged)
 					{
-						UpdateFromRGBToAll();
+						if (CheckWhichGroupBoxOwns(trackBar, gbxRGB))
+						{
+							UpdateFromRGBToAll();
+						}
+						else if (CheckWhichGroupBoxOwns(trackBar, gbxRGBA))
+						{
+							UpdateFromRGBAToAll();
+						}
+						else if (CheckWhichGroupBoxOwns(trackBar, gbxCMYK))
+						{
+							UpdateFromCMYKToAll();
+						}
 					}
-					//else if (CheckWhichGroupBoxOwns(trackBar, gbxRGBA))
-					//{
-					//	FromRGBAToUpdateAll();
-					//}
-					//else if (CheckWhichGroupBoxOwns(trackBar, gbxCMYK))
-					//{
-					//	FromCMYKToUpdateAll();
-					//}
 					//else if (CheckWhichGroupBoxOwns(trackBar, gbxHSB))
 					//{
-					//	FromHSBToUpdateAll();
+					//	UpdateFromHSBToAll();
 					//}
-					//else if (CheckWhichGroupBoxOwns(trackBar, gbxHSL))
+					//else
 					//{
-					//	FromHSLToUpdateAll();
+					//	UpdateFromHSLToAll();
 					//}
 				}
 
@@ -154,7 +181,6 @@ namespace ColorPicker
 
 				}
 			}
-
 		}
 
 		/// <summary>
@@ -166,10 +192,17 @@ namespace ColorPicker
 		private IEnumerable<Control> GetAll(Control parentControl, Type typeOfChild)
 		{
 			var controls = parentControl.Controls.Cast<Control>();
+			return controls.SelectMany(ctrl => GetAll(ctrl, typeOfChild)).Concat(controls).Where(c => c.GetType() == typeOfChild);
+		}
 
-			return controls.SelectMany(ctrl => GetAll(ctrl, typeOfChild))
-									  .Concat(controls)
-									  .Where(c => c.GetType() == typeOfChild);
+		/// <summary>
+		/// Hiển thị thông tin màu đang được chọn
+		/// </summary>
+		private void ShowPreview()
+		{
+			lblHexColor.BackColor = RGB.ToColor();
+			lblHexColor.Text = $"#{RGB.ToHex()}";
+			lblHexColor.ForeColor = ColorHelper.GetContrastColor(lblHexColor.BackColor);
 		}
 
 		/// <summary>
@@ -189,9 +222,7 @@ namespace ColorPicker
 			HSB = new HSB(RGB);
 			UpdateByColorSystem(typeof(HSB).Name);
 
-			lblHexColor.BackColor = RGB.ToColor();
-			lblHexColor.Text = $"#{RGB.ToHex()}";
-			lblHexColor.ForeColor = ColorHelper.GetContrastColor(lblHexColor.BackColor);
+			ShowPreview();
 		}
 
 		/// <summary>
@@ -199,7 +230,8 @@ namespace ColorPicker
 		/// </summary>
 		private void UpdateFromRGBAToAll()
 		{
-			RGBA = new RGBA((byte)trackRedGBA.Value, (byte)trackRGreenBA.Value, (byte)trackRGBlueA.Value, (byte)trackRGBAlpha.Value);
+			if (userChanged)
+				RGBA = new RGBA((byte)trackRedGBA.Value, (byte)trackRGreenBA.Value, (byte)trackRGBlueA.Value, trackRGBAlpha.Value / 100f);
 
 			RGB = RGBA.ToRgb();
 			UpdateByColorSystem(typeof(RGB).Name);
@@ -209,6 +241,8 @@ namespace ColorPicker
 			UpdateByColorSystem(typeof(HSL).Name);
 			HSB = new HSB(RGB);
 			UpdateByColorSystem(typeof(HSB).Name);
+
+			ShowPreview();
 		}
 
 		/// <summary>
@@ -216,7 +250,8 @@ namespace ColorPicker
 		/// </summary>
 		private void UpdateFromCMYKToAll()
 		{
-			CMYK = new CMYK(trackCyanMYK.Value, trackCMagentaYK.Value, trackCMYellowK.Value, trackCMYblacK.Value);
+			if (userChanged)
+				CMYK = new CMYK(trackCyanMYK.Value / 100f, trackCMagentaYK.Value / 100f, trackCMYellowK.Value / 100f, trackCMYblacK.Value / 100f);
 
 			RGB = CMYK.ToRgb();
 			UpdateByColorSystem(typeof(RGB).Name);
@@ -226,14 +261,18 @@ namespace ColorPicker
 			UpdateByColorSystem(typeof(HSL).Name);
 			HSB = new HSB(RGB);
 			UpdateByColorSystem(typeof(HSB).Name);
+
+			ShowPreview();
 		}
 
+		/*
 		/// <summary>
 		/// Từ HSL cập nhật các mã màu còn lại
 		/// </summary>
 		private void UpdateFromHSLToAll()
 		{
-			HSL = new HSL((uint)trackHueSL.Value, trackHSaturationL.Value, trackHSLightness.Value);
+			if (userChanged)
+				HSL = new HSL((uint)trackHueSL.Value, trackHSaturationL.Value / 100f, trackHSLightness.Value / 100f);
 
 			RGB = HSL.ToRgb();
 			UpdateByColorSystem(typeof(RGB).Name);
@@ -243,14 +282,17 @@ namespace ColorPicker
 			UpdateByColorSystem(typeof(CMYK).Name);
 			HSB = new HSB(RGB);
 			UpdateByColorSystem(typeof(HSB).Name);
+
+			ShowPreview();
 		}
 
 		/// <summary>
 		/// Từ HSB cập nhật các mã màu còn lại
 		/// </summary>
-		private void FromHSBToUpdateAll()
+		private void UpdateFromHSBToAll()
 		{
-			HSB = new HSB((uint)trackHueSB.Value, trackHSaturationB.Value, trackHSBrightness.Value);
+			if (userChanged)
+				HSB = new HSB((uint)trackHueSB.Value, trackHSaturationB.Value / 100f, trackHSBrightness.Value / 100f);
 
 			RGB = HSB.ToRgb();
 			UpdateByColorSystem(typeof(RGB).Name);
@@ -260,7 +302,10 @@ namespace ColorPicker
 			UpdateByColorSystem(typeof(CMYK).Name);
 			HSL = new HSL(RGB);
 			UpdateByColorSystem(typeof(HSL).Name);
+
+			ShowPreview();
 		}
+		*/
 
 		/// <summary>
 		/// Cập nhật các trackBar khác dựa trên mã màu sysColorName bị thay đổi
@@ -268,13 +313,15 @@ namespace ColorPicker
 		/// <param name="sysColorName">Mã màu bị thay đổi</param>
 		private void UpdateByColorSystem(string sysColorName)
 		{
+			// Ngăn sự kiện trackBarValueChanged xảy ra
+			userChanged = false;
 			switch (sysColorName)
 			{
 				case "RGBA":
 					trackRedGBA.Value = RGBA.Red;
 					trackRGreenBA.Value = RGBA.Green;
 					trackRGBlueA.Value = RGBA.Blue;
-					trackRGBAlpha.Value = (int)RGBA.Alpha;
+					trackRGBAlpha.Value = (int)(100 * RGBA.Alpha);
 					break;
 				case "RGB":
 					trackRedGB.Value = RGB.Red;
@@ -300,10 +347,11 @@ namespace ColorPicker
 				default:
 					break;
 			}
+			userChanged = true;
 		}
 
 		/// <summary>
-		/// Kiểm tra control thuộc groupbox nào
+		/// Kiểm tra control thuộc groupbox này không
 		/// </summary>
 		/// <param name="control">Control con</param>
 		/// <param name="groupBox">Groupbox cha</param>
@@ -315,14 +363,13 @@ namespace ColorPicker
 		}
 
 		/// <summary>
-		/// Hiển thị listbox màu đã biết
+		/// Hiển thị listbox màu đã biết trong thư viện .NET
 		/// </summary>
 		private void ShowKnownColors()
 		{
 			Array colorsArray = Enum.GetValues(typeof(KnownColor));
 			allColors = new KnownColor[colorsArray.Length];
 			Array.Copy(colorsArray, allColors, colorsArray.Length);
-			lbxColors.DrawItem += LbxColors_DrawItem;
 			foreach (var color in allColors)
 			{
 				lbxColors.Items.Add(Color.FromName(color.ToString()));

@@ -27,9 +27,11 @@ namespace ColorSystems
 		public RGB ToRgb()
 		{
 			byte r, g, b;
-			r = Convert.ToByte((1 - Alpha) * Red + Alpha * Red);
-			g = Convert.ToByte((1 - Alpha) * Green + Alpha * Green);
-			b = Convert.ToByte((1 - Alpha) * Blue + Alpha * Blue);
+			// Chọn background RGB là màu trắng, nghĩa là khi Alpha = 0 thì ra màu này
+			RGB rgbBackground = new RGB(255, 255, 255);
+			r = Convert.ToByte((1f - Alpha) * rgbBackground.Red + Alpha * Red);
+			g = Convert.ToByte((1f - Alpha) * rgbBackground.Green + Alpha * Green);
+			b = Convert.ToByte((1f - Alpha) * rgbBackground.Blue + Alpha * Blue);
 			return new RGB(r, g, b);
 		}
 

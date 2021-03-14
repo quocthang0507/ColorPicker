@@ -435,6 +435,7 @@ namespace ColorPicker
 			this.gbxCMYK.TabIndex = 6;
 			this.gbxCMYK.TabStop = false;
 			this.gbxCMYK.Text = "CMYK";
+			this.gbxCMYK.Paint += new System.Windows.Forms.PaintEventHandler(this.gbxRGB_Paint);
 			// 
 			// tableCMYK
 			// 
@@ -595,6 +596,7 @@ namespace ColorPicker
 			this.gbxRGBA.TabIndex = 5;
 			this.gbxRGBA.TabStop = false;
 			this.gbxRGBA.Text = "RGBA";
+			this.gbxRGBA.Paint += new System.Windows.Forms.PaintEventHandler(this.gbxRGB_Paint);
 			// 
 			// tableRGBA
 			// 
@@ -747,6 +749,7 @@ namespace ColorPicker
 			// 
 			// gbxRGB
 			// 
+			this.gbxRGB.BackColor = System.Drawing.SystemColors.Control;
 			this.gbxRGB.Controls.Add(this.tableRGB);
 			this.gbxRGB.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.gbxRGB.Location = new System.Drawing.Point(198, 3);
@@ -755,6 +758,7 @@ namespace ColorPicker
 			this.gbxRGB.TabIndex = 0;
 			this.gbxRGB.TabStop = false;
 			this.gbxRGB.Text = "RGB";
+			this.gbxRGB.Paint += new System.Windows.Forms.PaintEventHandler(this.gbxRGB_Paint);
 			// 
 			// tableRGB
 			// 
@@ -932,6 +936,7 @@ namespace ColorPicker
 			this.lbxColors.Name = "lbxColors";
 			this.lbxColors.Size = new System.Drawing.Size(314, 197);
 			this.lbxColors.TabIndex = 30;
+			this.lbxColors.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.LbxColors_DrawItem);
 			this.lbxColors.SelectedIndexChanged += new System.EventHandler(this.lbxColors_SelectedIndexChanged);
 			// 
 			// groupBox3
