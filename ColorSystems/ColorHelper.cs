@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 
 namespace ColorSystems
 {
@@ -20,6 +18,11 @@ namespace ColorSystems
 
 			Color foreColor = (255 - bgDelta < nThreshold) ? Color.Black : Color.White;
 			return foreColor;
+		}
+
+		public static string GetHexFromColor(Color color)
+		{
+			return new RGB(color).ToHex();
 		}
 	}
 }

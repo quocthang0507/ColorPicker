@@ -4,11 +4,11 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <ApplicationIcon>color_icon.ico</ApplicationIcon>
     <Authors>La Quoc Thang</Authors>
-    <PackageIcon>color_png.png</PackageIcon>
+    <PackageIcon>colors.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="C:\Users\quoct\Downloads\color_png.png">
+    <None Include="..\ColorPicker\Resources\colors.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

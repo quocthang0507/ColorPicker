@@ -16,20 +16,24 @@ namespace ColorPicker
 		private HSB HSB;
 		private HSL HSL;
 		private KnownColor[] allColors;
+		private bool userChanged = true;
 
 		public MainForm()
 		{
 			InitializeComponent();
-			new Thread(() =>
-			{
-				RegisterControls();
-				ShowKnownColors();
-			}).Start();
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			FromRGBToUpdateAll();
+			new Thread(() =>
+			{
+				Invoke((MethodInvoker)delegate ()
+				{
+					RegisterControls();
+					ShowKnownColors();
+				});
+			}).Start();
+			UpdateFromRGBToAll();
 		}
 
 		#region Events
@@ -47,7 +51,7 @@ namespace ColorPicker
 			KnownColor knownColor = allColors[e.Index];
 			string colorName = Enum.GetName(typeof(KnownColor), knownColor);
 			Color backgroundColor = Color.FromName(colorName);
-			Color textColor = GetContrastColor(backgroundColor);
+			Color textColor = ColorHelper.GetContrastColor(backgroundColor);
 
 			// draw the background color you want
 			// mine is set to olive, change it to whatever you want
@@ -56,7 +60,7 @@ namespace ColorPicker
 			// draw the text of the list item, not doing this will only show
 			// the background color
 			// you will need to get the text of item to display
-			graphics.DrawString(colorName, e.Font, new SolidBrush(textColor), new PointF(e.Bounds.X, e.Bounds.Y));
+			graphics.DrawString($"{colorName} (#{ColorHelper.GetHexFromColor(backgroundColor)})", e.Font, new SolidBrush(textColor), new PointF(e.Bounds.X, e.Bounds.Y));
 
 			e.DrawFocusRectangle();
 		}
@@ -67,7 +71,25 @@ namespace ColorPicker
 			string colorName = Enum.GetName(typeof(KnownColor), knownColor);
 			Color color = Color.FromName(colorName);
 			RGB = new RGB(color);
-			FromRGBToUpdateAll(false);
+			//////////////////////////
+			userChanged = false;
+			trackRedGB.Value = RGB.Red;
+			trackRGreenB.Value = RGB.Green;
+			trackRGBlue.Value = RGB.Blue;
+			UpdateFromRGBToAll();
+			userChanged = true;
+			//////////////////////////
+		}
+
+		private void btnCopy_Click(object sender, EventArgs e)
+		{
+			Clipboard.SetText(RGB.ToHex());
+			MessageBox.Show("Copied to clipboard successfully", "Copied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void btnPick_Click(object sender, EventArgs e)
+		{
+
 		}
 
 		#endregion
@@ -102,7 +124,7 @@ namespace ColorPicker
 					textBox.Text = trackBar.Value.ToString();
 					if (CheckWhichGroupBoxOwns(trackBar, gbxRGB))
 					{
-						FromRGBToUpdateAll();
+						UpdateFromRGBToAll();
 					}
 					//else if (CheckWhichGroupBoxOwns(trackBar, gbxRGBA))
 					//{
@@ -131,8 +153,6 @@ namespace ColorPicker
 					}
 
 				}
-				// Xóa control đã tìm được để lần sau tìm nhanh hơn
-				tbxControls.Remove(textBox);
 			}
 
 		}
@@ -155,18 +175,19 @@ namespace ColorPicker
 		/// <summary>
 		/// Từ RGB cập nhật các mã màu còn lại
 		/// </summary>
-		private void FromRGBToUpdateAll(bool getFromControls = true)
+		private void UpdateFromRGBToAll()
 		{
-			if (getFromControls)
+			if (userChanged)
 				RGB = new RGB((byte)trackRedGB.Value, (byte)trackRGreenB.Value, (byte)trackRGBlue.Value);
+
 			RGBA = new RGBA(RGB);
-			UpdateColorSystem(typeof(RGBA).Name);
+			UpdateByColorSystem(typeof(RGBA).Name);
 			CMYK = new CMYK(RGB);
-			UpdateColorSystem(typeof(CMYK).Name);
+			UpdateByColorSystem(typeof(CMYK).Name);
 			HSL = new HSL(RGB);
-			UpdateColorSystem(typeof(HSL).Name);
+			UpdateByColorSystem(typeof(HSL).Name);
 			HSB = new HSB(RGB);
-			UpdateColorSystem(typeof(HSB).Name);
+			UpdateByColorSystem(typeof(HSB).Name);
 
 			lblHexColor.BackColor = RGB.ToColor();
 			lblHexColor.Text = $"#{RGB.ToHex()}";
@@ -176,52 +197,52 @@ namespace ColorPicker
 		/// <summary>
 		/// Từ RGBA cập nhật các mã màu còn lại
 		/// </summary>
-		private void FromRGBAToUpdateAll()
+		private void UpdateFromRGBAToAll()
 		{
 			RGBA = new RGBA((byte)trackRedGBA.Value, (byte)trackRGreenBA.Value, (byte)trackRGBlueA.Value, (byte)trackRGBAlpha.Value);
 
 			RGB = RGBA.ToRgb();
-			UpdateColorSystem(typeof(RGB).Name);
+			UpdateByColorSystem(typeof(RGB).Name);
 			CMYK = new CMYK(RGB);
-			UpdateColorSystem(typeof(CMYK).Name);
+			UpdateByColorSystem(typeof(CMYK).Name);
 			HSL = new HSL(RGB);
-			UpdateColorSystem(typeof(HSL).Name);
+			UpdateByColorSystem(typeof(HSL).Name);
 			HSB = new HSB(RGB);
-			UpdateColorSystem(typeof(HSB).Name);
+			UpdateByColorSystem(typeof(HSB).Name);
 		}
 
 		/// <summary>
 		/// Từ CMYK cập nhật các mã màu còn lại
 		/// </summary>
-		private void FromCMYKToUpdateAll()
+		private void UpdateFromCMYKToAll()
 		{
 			CMYK = new CMYK(trackCyanMYK.Value, trackCMagentaYK.Value, trackCMYellowK.Value, trackCMYblacK.Value);
 
 			RGB = CMYK.ToRgb();
-			UpdateColorSystem(typeof(RGB).Name);
+			UpdateByColorSystem(typeof(RGB).Name);
 			RGBA = new RGBA(RGB);
-			UpdateColorSystem(typeof(RGBA).Name);
+			UpdateByColorSystem(typeof(RGBA).Name);
 			HSL = new HSL(RGB);
-			UpdateColorSystem(typeof(HSL).Name);
+			UpdateByColorSystem(typeof(HSL).Name);
 			HSB = new HSB(RGB);
-			UpdateColorSystem(typeof(HSB).Name);
+			UpdateByColorSystem(typeof(HSB).Name);
 		}
 
 		/// <summary>
 		/// Từ HSL cập nhật các mã màu còn lại
 		/// </summary>
-		private void FromHSLToUpdateAll()
+		private void UpdateFromHSLToAll()
 		{
 			HSL = new HSL((uint)trackHueSL.Value, trackHSaturationL.Value, trackHSLightness.Value);
 
 			RGB = HSL.ToRgb();
-			UpdateColorSystem(typeof(RGB).Name);
+			UpdateByColorSystem(typeof(RGB).Name);
 			RGBA = new RGBA(RGB);
-			UpdateColorSystem(typeof(RGBA).Name);
+			UpdateByColorSystem(typeof(RGBA).Name);
 			CMYK = new CMYK(RGB);
-			UpdateColorSystem(typeof(CMYK).Name);
+			UpdateByColorSystem(typeof(CMYK).Name);
 			HSB = new HSB(RGB);
-			UpdateColorSystem(typeof(HSB).Name);
+			UpdateByColorSystem(typeof(HSB).Name);
 		}
 
 		/// <summary>
@@ -232,20 +253,20 @@ namespace ColorPicker
 			HSB = new HSB((uint)trackHueSB.Value, trackHSaturationB.Value, trackHSBrightness.Value);
 
 			RGB = HSB.ToRgb();
-			UpdateColorSystem(typeof(RGB).Name);
+			UpdateByColorSystem(typeof(RGB).Name);
 			RGBA = new RGBA(RGB);
-			UpdateColorSystem(typeof(RGBA).Name);
+			UpdateByColorSystem(typeof(RGBA).Name);
 			CMYK = new CMYK(RGB);
-			UpdateColorSystem(typeof(CMYK).Name);
+			UpdateByColorSystem(typeof(CMYK).Name);
 			HSL = new HSL(RGB);
-			UpdateColorSystem(typeof(HSL).Name);
+			UpdateByColorSystem(typeof(HSL).Name);
 		}
 
 		/// <summary>
 		/// Cập nhật các trackBar khác dựa trên mã màu sysColorName bị thay đổi
 		/// </summary>
 		/// <param name="sysColorName">Mã màu bị thay đổi</param>
-		private void UpdateColorSystem(string sysColorName)
+		private void UpdateByColorSystem(string sysColorName)
 		{
 			switch (sysColorName)
 			{
@@ -307,5 +328,6 @@ namespace ColorPicker
 				lbxColors.Items.Add(Color.FromName(color.ToString()));
 			}
 		}
+
 	}
 }

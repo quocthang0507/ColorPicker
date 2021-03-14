@@ -98,6 +98,9 @@ namespace ColorPicker
 			this.lblHexColor = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.lbxColors = new System.Windows.Forms.ListBox();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.btnPick = new System.Windows.Forms.Button();
+			this.btnCopy = new System.Windows.Forms.Button();
 			this.tableMain.SuspendLayout();
 			this.tableColorSystems.SuspendLayout();
 			this.gbxHSL.SuspendLayout();
@@ -130,6 +133,7 @@ namespace ColorPicker
 			this.tableTools.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
+			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableMain
@@ -875,6 +879,7 @@ namespace ColorPicker
 			this.tableTools.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableTools.Controls.Add(this.groupBox1, 1, 0);
 			this.tableTools.Controls.Add(this.groupBox2, 0, 0);
+			this.tableTools.Controls.Add(this.groupBox3, 2, 0);
 			this.tableTools.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableTools.Location = new System.Drawing.Point(3, 233);
 			this.tableTools.Name = "tableTools";
@@ -926,8 +931,44 @@ namespace ColorPicker
 			this.lbxColors.Location = new System.Drawing.Point(3, 19);
 			this.lbxColors.Name = "lbxColors";
 			this.lbxColors.Size = new System.Drawing.Size(314, 197);
-			this.lbxColors.TabIndex = 0;
+			this.lbxColors.TabIndex = 30;
 			this.lbxColors.SelectedIndexChanged += new System.EventHandler(this.lbxColors_SelectedIndexChanged);
+			// 
+			// groupBox3
+			// 
+			this.groupBox3.Controls.Add(this.btnPick);
+			this.groupBox3.Controls.Add(this.btnCopy);
+			this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.groupBox3.Location = new System.Drawing.Point(655, 3);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(320, 219);
+			this.groupBox3.TabIndex = 3;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "Utility";
+			// 
+			// btnPick
+			// 
+			this.btnPick.BackColor = System.Drawing.Color.Transparent;
+			this.btnPick.BackgroundImage = global::ColorPicker.Properties.Resources.color_picker_png;
+			this.btnPick.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnPick.FlatAppearance.BorderSize = 0;
+			this.btnPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPick.Location = new System.Drawing.Point(123, 51);
+			this.btnPick.Name = "btnPick";
+			this.btnPick.Size = new System.Drawing.Size(75, 75);
+			this.btnPick.TabIndex = 37;
+			this.btnPick.UseVisualStyleBackColor = false;
+			this.btnPick.Click += new System.EventHandler(this.btnPick_Click);
+			// 
+			// btnCopy
+			// 
+			this.btnCopy.Location = new System.Drawing.Point(77, 22);
+			this.btnCopy.Name = "btnCopy";
+			this.btnCopy.Size = new System.Drawing.Size(170, 23);
+			this.btnCopy.TabIndex = 36;
+			this.btnCopy.Text = "Copy hex color to clipboard";
+			this.btnCopy.UseVisualStyleBackColor = true;
+			this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
 			// 
 			// MainForm
 			// 
@@ -980,6 +1021,7 @@ namespace ColorPicker
 			this.tableTools.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
+			this.groupBox3.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -1054,6 +1096,9 @@ namespace ColorPicker
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.ListBox lbxColors;
+		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.Button btnCopy;
+		private System.Windows.Forms.Button btnPick;
 	}
 }
 
