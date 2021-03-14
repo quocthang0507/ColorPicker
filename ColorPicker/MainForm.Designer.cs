@@ -93,8 +93,11 @@ namespace ColorPicker
 			this.trackRedGB = new System.Windows.Forms.TrackBar();
 			this.trackRGreenB = new System.Windows.Forms.TrackBar();
 			this.trackRGBlue = new System.Windows.Forms.TrackBar();
-			this.panelColor = new System.Windows.Forms.Panel();
+			this.tableTools = new System.Windows.Forms.TableLayoutPanel();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.lblHexColor = new System.Windows.Forms.Label();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.lbxColors = new System.Windows.Forms.ListBox();
 			this.tableMain.SuspendLayout();
 			this.tableColorSystems.SuspendLayout();
 			this.gbxHSL.SuspendLayout();
@@ -124,7 +127,9 @@ namespace ColorPicker
 			((System.ComponentModel.ISupportInitialize)(this.trackRedGB)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGreenB)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGBlue)).BeginInit();
-			this.panelColor.SuspendLayout();
+			this.tableTools.SuspendLayout();
+			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableMain
@@ -132,7 +137,7 @@ namespace ColorPicker
 			this.tableMain.ColumnCount = 1;
 			this.tableMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableMain.Controls.Add(this.tableColorSystems, 0, 0);
-			this.tableMain.Controls.Add(this.panelColor, 0, 1);
+			this.tableMain.Controls.Add(this.tableTools, 0, 1);
 			this.tableMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableMain.Location = new System.Drawing.Point(0, 0);
 			this.tableMain.Name = "tableMain";
@@ -862,25 +867,67 @@ namespace ColorPicker
 			this.trackRGBlue.Size = new System.Drawing.Size(80, 45);
 			this.trackRGBlue.TabIndex = 13;
 			// 
-			// panelColor
+			// tableTools
 			// 
-			this.panelColor.Controls.Add(this.lblHexColor);
-			this.panelColor.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panelColor.Location = new System.Drawing.Point(3, 233);
-			this.panelColor.Name = "panelColor";
-			this.panelColor.Size = new System.Drawing.Size(978, 225);
-			this.panelColor.TabIndex = 1;
+			this.tableTools.ColumnCount = 3;
+			this.tableTools.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableTools.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableTools.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableTools.Controls.Add(this.groupBox1, 1, 0);
+			this.tableTools.Controls.Add(this.groupBox2, 0, 0);
+			this.tableTools.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableTools.Location = new System.Drawing.Point(3, 233);
+			this.tableTools.Name = "tableTools";
+			this.tableTools.RowCount = 1;
+			this.tableTools.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableTools.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 225F));
+			this.tableTools.Size = new System.Drawing.Size(978, 225);
+			this.tableTools.TabIndex = 1;
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.lblHexColor);
+			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.groupBox1.Location = new System.Drawing.Point(329, 3);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(320, 219);
+			this.groupBox1.TabIndex = 1;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Preview";
 			// 
 			// lblHexColor
 			// 
 			this.lblHexColor.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lblHexColor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.lblHexColor.Location = new System.Drawing.Point(0, 0);
+			this.lblHexColor.Location = new System.Drawing.Point(3, 19);
 			this.lblHexColor.Name = "lblHexColor";
-			this.lblHexColor.Size = new System.Drawing.Size(978, 225);
+			this.lblHexColor.Size = new System.Drawing.Size(314, 197);
 			this.lblHexColor.TabIndex = 0;
 			this.lblHexColor.Text = "#";
 			this.lblHexColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.lbxColors);
+			this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.groupBox2.Location = new System.Drawing.Point(3, 3);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(320, 219);
+			this.groupBox2.TabIndex = 2;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Color Library";
+			// 
+			// lbxColors
+			// 
+			this.lbxColors.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbxColors.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.lbxColors.FormattingEnabled = true;
+			this.lbxColors.ItemHeight = 25;
+			this.lbxColors.Location = new System.Drawing.Point(3, 19);
+			this.lbxColors.Name = "lbxColors";
+			this.lbxColors.Size = new System.Drawing.Size(314, 197);
+			this.lbxColors.TabIndex = 0;
+			this.lbxColors.SelectedIndexChanged += new System.EventHandler(this.lbxColors_SelectedIndexChanged);
 			// 
 			// MainForm
 			// 
@@ -930,7 +977,9 @@ namespace ColorPicker
 			((System.ComponentModel.ISupportInitialize)(this.trackRedGB)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGreenB)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackRGBlue)).EndInit();
-			this.panelColor.ResumeLayout(false);
+			this.tableTools.ResumeLayout(false);
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox2.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -1000,8 +1049,11 @@ namespace ColorPicker
 		private System.Windows.Forms.TrackBar trackCMagentaYK;
 		private System.Windows.Forms.TrackBar trackCMYellowK;
 		private System.Windows.Forms.TextBox tbxRGBAlpha;
-		private System.Windows.Forms.Panel panelColor;
+		private System.Windows.Forms.TableLayoutPanel tableTools;
 		private System.Windows.Forms.Label lblHexColor;
+		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.ListBox lbxColors;
 	}
 }
 

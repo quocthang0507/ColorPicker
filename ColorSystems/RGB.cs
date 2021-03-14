@@ -28,6 +28,13 @@ namespace ColorSystems
 		public string GreenInHex { get { return Green.ToString("X"); } }
 		public string BlueInHex { get { return Blue.ToString("X"); } }
 
+		public RGB(Color color)
+		{
+			Red = color.R;
+			Green = color.G;
+			Blue = color.B;
+		}
+
 		public RGB(byte red, byte green, byte blue)
 		{
 			Red = red;

@@ -15,17 +15,62 @@ namespace ColorPicker
 		private CMYK CMYK;
 		private HSB HSB;
 		private HSL HSL;
+		private KnownColor[] allColors;
 
 		public MainForm()
 		{
 			InitializeComponent();
-			new Thread(() => RegisterControls()).Start();
+			new Thread(() =>
+			{
+				RegisterControls();
+				ShowKnownColors();
+			}).Start();
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			FromRGBToUpdateAll();
 		}
+
+		#region Events
+
+		/// <summary>
+		/// https://stackoverflow.com/a/2555062
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void LbxColors_DrawItem(object sender, DrawItemEventArgs e)
+		{
+			e.DrawBackground();
+
+			Graphics graphics = e.Graphics;
+			KnownColor knownColor = allColors[e.Index];
+			string colorName = Enum.GetName(typeof(KnownColor), knownColor);
+			Color backgroundColor = Color.FromName(colorName);
+			Color textColor = GetContrastColor(backgroundColor);
+
+			// draw the background color you want
+			// mine is set to olive, change it to whatever you want
+			graphics.FillRectangle(new SolidBrush(backgroundColor), e.Bounds);
+
+			// draw the text of the list item, not doing this will only show
+			// the background color
+			// you will need to get the text of item to display
+			graphics.DrawString(colorName, e.Font, new SolidBrush(textColor), new PointF(e.Bounds.X, e.Bounds.Y));
+
+			e.DrawFocusRectangle();
+		}
+
+		private void lbxColors_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			KnownColor knownColor = allColors[lbxColors.SelectedIndex];
+			string colorName = Enum.GetName(typeof(KnownColor), knownColor);
+			Color color = Color.FromName(colorName);
+			RGB = new RGB(color);
+			FromRGBToUpdateAll(false);
+		}
+
+		#endregion
 
 		/// <summary>
 		/// Đăng ký sự kiện từng cặp trackBar và textBox một
@@ -110,10 +155,10 @@ namespace ColorPicker
 		/// <summary>
 		/// Từ RGB cập nhật các mã màu còn lại
 		/// </summary>
-		private void FromRGBToUpdateAll()
+		private void FromRGBToUpdateAll(bool getFromControls = true)
 		{
-			RGB = new RGB((byte)trackRedGB.Value, (byte)trackRGreenB.Value, (byte)trackRGBlue.Value);
-
+			if (getFromControls)
+				RGB = new RGB((byte)trackRedGB.Value, (byte)trackRGreenB.Value, (byte)trackRGBlue.Value);
 			RGBA = new RGBA(RGB);
 			UpdateColorSystem(typeof(RGBA).Name);
 			CMYK = new CMYK(RGB);
@@ -123,9 +168,9 @@ namespace ColorPicker
 			HSB = new HSB(RGB);
 			UpdateColorSystem(typeof(HSB).Name);
 
-			panelColor.BackColor = RGB.ToColor();
+			lblHexColor.BackColor = RGB.ToColor();
 			lblHexColor.Text = $"#{RGB.ToHex()}";
-			lblHexColor.ForeColor = HSB.Brightness > 0.5 ? Color.Black : Color.White;
+			lblHexColor.ForeColor = ColorHelper.GetContrastColor(lblHexColor.BackColor);
 		}
 
 		/// <summary>
@@ -246,6 +291,21 @@ namespace ColorPicker
 		{
 			var controls = GetAll(groupBox, control.GetType());
 			return controls.Contains(control);
+		}
+
+		/// <summary>
+		/// Hiển thị listbox màu đã biết
+		/// </summary>
+		private void ShowKnownColors()
+		{
+			Array colorsArray = Enum.GetValues(typeof(KnownColor));
+			allColors = new KnownColor[colorsArray.Length];
+			Array.Copy(colorsArray, allColors, colorsArray.Length);
+			lbxColors.DrawItem += LbxColors_DrawItem;
+			foreach (var color in allColors)
+			{
+				lbxColors.Items.Add(Color.FromName(color.ToString()));
+			}
 		}
 	}
 }
