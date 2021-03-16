@@ -14,12 +14,14 @@ namespace ColorPicker
 
 		private void mouseMoveTimer_Tick(object sender, EventArgs e)
 		{
-			Point cursor = new Point();
+			Point cursor = new();
 			Picker2.GetCursorPos(ref cursor);
 
-			var color = Picker2.GetColorAt(cursor);
-			this.BackColor = color;
-			lblHexColor.Text = "#" + new RGB(color);
+			var pixelColor = Picker2.GetColorAt(cursor);
+			BackColor = pixelColor;
+
+			lblHexColor.Text = "#" + new RGB(pixelColor);
+			lblHexColor.ForeColor = ColorHelper.GetContrastColor(pixelColor);
 		}
 
 		private void PickerForm_Load(object sender, EventArgs e)

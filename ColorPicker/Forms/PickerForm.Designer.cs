@@ -37,7 +37,7 @@ namespace ColorPicker
 			// 
 			// mouseMoveTimer
 			// 
-			this.mouseMoveTimer.Interval = 250;
+			this.mouseMoveTimer.Interval = 150;
 			this.mouseMoveTimer.Tick += new System.EventHandler(this.mouseMoveTimer_Tick);
 			// 
 			// lblHexColor
