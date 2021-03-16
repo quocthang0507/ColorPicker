@@ -178,5 +178,10 @@ namespace ColorSystems
 		{
 			return new RGBA(Red, Green, Blue, 1.0);
 		}
+
+		public override string ToString()
+		{
+			return ToHex();
+		}
 	}
 }

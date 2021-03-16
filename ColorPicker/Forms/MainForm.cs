@@ -113,9 +113,16 @@ namespace ColorPicker
 
 		private void btnPick_Click(object sender, EventArgs e)
 		{
-
+			PickerForm form = new PickerForm();
+			form.FormClosed += Form_FormClosed;
+			this.WindowState = FormWindowState.Minimized;
+			form.ShowDialog();
 		}
 
+		private void Form_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			this.WindowState = FormWindowState.Normal;
+		}
 		#endregion
 
 		/// <summary>
