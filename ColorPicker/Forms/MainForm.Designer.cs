@@ -104,6 +104,7 @@ namespace ColorPicker
 			this.btnPicker2 = new System.Windows.Forms.Button();
 			this.btnPick = new System.Windows.Forms.Button();
 			this.btnCopy = new System.Windows.Forms.Button();
+			this.label18 = new System.Windows.Forms.Label();
 			this.tableMain.SuspendLayout();
 			this.tableColorSystems.SuspendLayout();
 			this.gbxHSL.SuspendLayout();
@@ -944,6 +945,7 @@ namespace ColorPicker
 			// 
 			// groupBox3
 			// 
+			this.groupBox3.Controls.Add(this.label18);
 			this.groupBox3.Controls.Add(this.btnPicker2);
 			this.groupBox3.Controls.Add(this.btnPick);
 			this.groupBox3.Controls.Add(this.btnCopy);
@@ -963,7 +965,7 @@ namespace ColorPicker
 			this.btnPicker2.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnPicker2.FlatAppearance.BorderSize = 0;
 			this.btnPicker2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPicker2.Location = new System.Drawing.Point(172, 51);
+			this.btnPicker2.Location = new System.Drawing.Point(181, 87);
 			this.btnPicker2.Name = "btnPicker2";
 			this.btnPicker2.Size = new System.Drawing.Size(75, 75);
 			this.btnPicker2.TabIndex = 38;
@@ -978,7 +980,7 @@ namespace ColorPicker
 			this.btnPick.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnPick.FlatAppearance.BorderSize = 0;
 			this.btnPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPick.Location = new System.Drawing.Point(77, 51);
+			this.btnPick.Location = new System.Drawing.Point(62, 87);
 			this.btnPick.Name = "btnPick";
 			this.btnPick.Size = new System.Drawing.Size(75, 75);
 			this.btnPick.TabIndex = 37;
@@ -994,6 +996,16 @@ namespace ColorPicker
 			this.btnCopy.Text = "Copy hex color to clipboard";
 			this.btnCopy.UseVisualStyleBackColor = true;
 			this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.label18.Location = new System.Drawing.Point(143, 117);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(32, 21);
+			this.label18.TabIndex = 39;
+			this.label18.Text = "OR";
 			// 
 			// MainForm
 			// 
@@ -1047,6 +1059,7 @@ namespace ColorPicker
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
+			this.groupBox3.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -1125,6 +1138,7 @@ namespace ColorPicker
 		private System.Windows.Forms.Button btnCopy;
 		private System.Windows.Forms.Button btnPick;
 		private System.Windows.Forms.Button btnPicker2;
+		private System.Windows.Forms.Label label18;
 	}
 }
 

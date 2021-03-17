@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace ColorSystems
+namespace ColorLib
 {
 	public class ColorHelper
 	{

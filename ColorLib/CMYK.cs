@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace ColorSystems
+namespace ColorLib
 {
 	/// <summary>
 	/// The CMYK color space, also known as CMJN, stands for: Cyan, Magenta, Yellow, and blacK.

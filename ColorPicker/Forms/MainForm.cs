@@ -1,4 +1,4 @@
-﻿using ColorSystems;
+﻿using ColorLib;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,6 +17,17 @@ namespace ColorPicker
 		private HSL HSL;
 		private KnownColor[] allColors;
 		private bool userChanged = true;
+		private static MainForm singleton;
+
+		public static MainForm Instance
+		{
+			get
+			{
+				if (singleton == null)
+					singleton = new MainForm();
+				return singleton;
+			}
+		}
 
 		public MainForm()
 		{
@@ -67,15 +78,7 @@ namespace ColorPicker
 			KnownColor knownColor = allColors[lbxColors.SelectedIndex];
 			string colorName = Enum.GetName(typeof(KnownColor), knownColor);
 			Color color = Color.FromName(colorName);
-			RGB = new RGB(color);
-			//////////////////////////
-			userChanged = false;
-			trackRedGB.Value = RGB.Red;
-			trackRGreenB.Value = RGB.Green;
-			trackRGBlue.Value = RGB.Blue;
-			UpdateFromRGBToAll();
-			userChanged = true;
-			//////////////////////////
+			SetRGBColor(color);
 		}
 
 		private void btnCopy_Click(object sender, EventArgs e)
@@ -126,12 +129,16 @@ namespace ColorPicker
 
 		private void btnPicker2_Click(object sender, EventArgs e)
 		{
-			FloatingPickerForm form = new();
-			form.FormClosed += Form_FormClosed;
+			FloatingPickerForm.Instance.FormClosed += Form_FormClosed;
 			WindowState = FormWindowState.Minimized;
-			form.ShowDialog();
+			FloatingPickerForm.Instance.ShowDialog();
 		}
 		#endregion
+
+		public void ReceiveColor(Color pixelColor)
+		{
+			SetRGBColor(pixelColor);
+		}
 
 		/// <summary>
 		/// Đăng ký sự kiện từng cặp trackBar và textBox một
@@ -391,5 +398,17 @@ namespace ColorPicker
 			}
 		}
 
+		private void SetRGBColor(Color color)
+		{
+			RGB = new RGB(color);
+			//////////////////////////
+			userChanged = false;
+			trackRedGB.Value = RGB.Red;
+			trackRGreenB.Value = RGB.Green;
+			trackRGBlue.Value = RGB.Blue;
+			UpdateFromRGBToAll();
+			userChanged = true;
+			//////////////////////////		
+		}
 	}
 }

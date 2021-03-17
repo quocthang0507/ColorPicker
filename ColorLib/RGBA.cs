@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace ColorSystems
+namespace ColorLib
 {
 	/// <summary>
 	/// RGBA color values are an extension of RGB color values with an alpha channel - which specifies the opacity for a color.

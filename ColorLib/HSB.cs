@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace ColorSystems
+namespace ColorLib
 {
 	/// <summary>
 	/// The HSB (Hue, Saturation, B rightness) color model defines a color space in terms of three constituent components:

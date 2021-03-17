@@ -7,10 +7,12 @@
     <ApplicationIcon>color_icon.ico</ApplicationIcon>
     <Authors>La Quoc Thang</Authors>
     <PackageIcon>colors.png</PackageIcon>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ColorSystems\ColorSystems.csproj" />
+    <ProjectReference Include="..\ColorLib\ColorLib.csproj" />
+    <ProjectReference Include="..\HookLib\HookLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

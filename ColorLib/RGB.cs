@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Text;
 
-namespace ColorSystems
+namespace ColorLib
 {
 	/// <summary>
 	/// The RGB (Red, Green, Blue) color model is the most known, and the most used every day. It defines a color space in terms of three components:

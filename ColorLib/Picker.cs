@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
-namespace ColorSystems
+namespace ColorLib
 {
 	/// <summary>
 	/// https://stackoverflow.com/a/24759418

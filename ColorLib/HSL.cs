@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace ColorSystems
+namespace ColorLib
 {
 	/// <summary>
 	/// The HSL color space, also called HLS or HSI , stands for:

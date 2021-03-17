@@ -37,27 +37,27 @@ namespace ColorPicker
 			// 
 			// mouseMoveTimer
 			// 
-			this.mouseMoveTimer.Interval = 150;
 			this.mouseMoveTimer.Tick += new System.EventHandler(this.mouseMoveTimer_Tick);
 			// 
 			// lblHexColor
 			// 
 			this.lblHexColor.BackColor = System.Drawing.Color.Transparent;
 			this.lblHexColor.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lblHexColor.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.lblHexColor.Location = new System.Drawing.Point(0, 0);
+			this.lblHexColor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblHexColor.Name = "lblHexColor";
-			this.lblHexColor.Size = new System.Drawing.Size(150, 100);
+			this.lblHexColor.Size = new System.Drawing.Size(134, 61);
 			this.lblHexColor.TabIndex = 0;
 			this.lblHexColor.Text = "#";
 			this.lblHexColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// PickerForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(150, 100);
+			this.ClientSize = new System.Drawing.Size(134, 61);
 			this.Controls.Add(this.lblHexColor);
+			this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
