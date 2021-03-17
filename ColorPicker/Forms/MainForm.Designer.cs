@@ -101,6 +101,7 @@ namespace ColorPicker
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.lbxColors = new System.Windows.Forms.ListBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.btnPicker2 = new System.Windows.Forms.Button();
 			this.btnPick = new System.Windows.Forms.Button();
 			this.btnCopy = new System.Windows.Forms.Button();
 			this.tableMain.SuspendLayout();
@@ -943,6 +944,7 @@ namespace ColorPicker
 			// 
 			// groupBox3
 			// 
+			this.groupBox3.Controls.Add(this.btnPicker2);
 			this.groupBox3.Controls.Add(this.btnPick);
 			this.groupBox3.Controls.Add(this.btnCopy);
 			this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -953,14 +955,30 @@ namespace ColorPicker
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Utility";
 			// 
+			// btnPicker2
+			// 
+			this.btnPicker2.BackColor = System.Drawing.Color.Transparent;
+			this.btnPicker2.BackgroundImage = global::ColorPicker.Properties.Resources.picker_png;
+			this.btnPicker2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnPicker2.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnPicker2.FlatAppearance.BorderSize = 0;
+			this.btnPicker2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPicker2.Location = new System.Drawing.Point(172, 51);
+			this.btnPicker2.Name = "btnPicker2";
+			this.btnPicker2.Size = new System.Drawing.Size(75, 75);
+			this.btnPicker2.TabIndex = 38;
+			this.btnPicker2.UseVisualStyleBackColor = false;
+			this.btnPicker2.Click += new System.EventHandler(this.btnPicker2_Click);
+			// 
 			// btnPick
 			// 
 			this.btnPick.BackColor = System.Drawing.Color.Transparent;
 			this.btnPick.BackgroundImage = global::ColorPicker.Properties.Resources.color_picker_png;
 			this.btnPick.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnPick.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnPick.FlatAppearance.BorderSize = 0;
 			this.btnPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPick.Location = new System.Drawing.Point(123, 51);
+			this.btnPick.Location = new System.Drawing.Point(77, 51);
 			this.btnPick.Name = "btnPick";
 			this.btnPick.Size = new System.Drawing.Size(75, 75);
 			this.btnPick.TabIndex = 37;
@@ -1106,6 +1124,7 @@ namespace ColorPicker
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.Button btnCopy;
 		private System.Windows.Forms.Button btnPick;
+		private System.Windows.Forms.Button btnPicker2;
 	}
 }
 

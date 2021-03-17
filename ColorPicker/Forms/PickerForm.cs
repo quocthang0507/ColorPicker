@@ -1,6 +1,5 @@
 ﻿using ColorSystems;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ColorPicker
@@ -14,10 +13,11 @@ namespace ColorPicker
 
 		private void mouseMoveTimer_Tick(object sender, EventArgs e)
 		{
-			Point cursor = new();
-			Picker2.GetCursorPos(ref cursor);
+			// Point cursor = new();
+			// Picker2.GetCursorPos(ref cursor);
 
-			var pixelColor = Picker2.GetColorAt(cursor);
+			// var pixelColor = Picker2.GetColorAt(cursor);
+			var pixelColor = Picker2.GetColorAt(Cursor.Position);
 			BackColor = pixelColor;
 
 			lblHexColor.Text = "#" + new RGB(pixelColor);

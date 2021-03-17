@@ -113,15 +113,23 @@ namespace ColorPicker
 
 		private void btnPick_Click(object sender, EventArgs e)
 		{
-			PickerForm form = new PickerForm();
+			PickerForm form = new();
 			form.FormClosed += Form_FormClosed;
-			this.WindowState = FormWindowState.Minimized;
+			WindowState = FormWindowState.Minimized;
 			form.ShowDialog();
 		}
 
 		private void Form_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			this.WindowState = FormWindowState.Normal;
+		}
+
+		private void btnPicker2_Click(object sender, EventArgs e)
+		{
+			FloatingPickerForm form = new();
+			form.FormClosed += Form_FormClosed;
+			WindowState = FormWindowState.Minimized;
+			form.ShowDialog();
 		}
 		#endregion
 
