@@ -93,22 +93,18 @@ namespace HookLib
 			{
 				// KeyDown events
 				case InterceptKeys.KeyEvent.WM_KEYDOWN:
-					if (KeyDown != null)
-						KeyDown(this, new RawKeyEventArgs(vkCode, false));
+					KeyDown?.Invoke(this, new RawKeyEventArgs(vkCode, false));
 					break;
 				case InterceptKeys.KeyEvent.WM_SYSKEYDOWN:
-					if (KeyDown != null)
-						KeyDown(this, new RawKeyEventArgs(vkCode, true));
+					KeyDown?.Invoke(this, new RawKeyEventArgs(vkCode, true));
 					break;
 
 				// KeyUp events
 				case InterceptKeys.KeyEvent.WM_KEYUP:
-					if (KeyUp != null)
-						KeyUp(this, new RawKeyEventArgs(vkCode, false));
+					KeyUp?.Invoke(this, new RawKeyEventArgs(vkCode, false));
 					break;
 				case InterceptKeys.KeyEvent.WM_SYSKEYUP:
-					if (KeyUp != null)
-						KeyUp(this, new RawKeyEventArgs(vkCode, true));
+					KeyUp?.Invoke(this, new RawKeyEventArgs(vkCode, true));
 					break;
 
 				default:
