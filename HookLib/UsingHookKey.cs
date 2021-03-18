@@ -1,8 +1,7 @@
-﻿using HookLib;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
 
-namespace ColorPicker
+namespace HookLib
 {
 	/// <summary>
 	/// Raise the Keyboard event
@@ -10,9 +9,11 @@ namespace ColorPicker
 	/// </summary>
 	public class UsingHookKey
 	{
-		private KeyboardListener keyboardListener;
+		public MyDelegate UpdateColor { get; set; }
+		public delegate void MyDelegate();
 
-		private int vkcode { get; set; }
+		private KeyboardListener keyboardListener;
+		private int vkcode;
 
 		public UsingHookKey()
 		{
@@ -30,7 +31,7 @@ namespace ColorPicker
 			switch (args.VKCode)
 			{
 				case VKCodeConst.ESC:
-					FloatingPickerForm.Instance.Close();
+					UpdateColor.Invoke();
 					break;
 				default:
 					break;

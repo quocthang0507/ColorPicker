@@ -1,4 +1,5 @@
 ﻿using ColorLib;
+using HookLib;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -12,22 +13,14 @@ namespace ColorPicker
 		private const int PHeight = 30;
 		private Color pixelColor;
 		private UsingHookKey hook;
-		private static FloatingPickerForm singleton;
-
-		public static FloatingPickerForm Instance
-		{
-			get
-			{
-				if (singleton == null)
-					singleton = new FloatingPickerForm();
-				return singleton;
-			}
-		}
 
 		public FloatingPickerForm()
 		{
 			InitializeComponent();
-			hook = new UsingHookKey();
+			hook = new UsingHookKey
+			{
+				UpdateColor = () => Close()
+			};
 		}
 
 		private void FloatingPickerForm_Load(object sender, EventArgs e)
