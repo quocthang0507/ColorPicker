@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace ColorPicker
+namespace ColorPicker2
 {
 	public partial class MainForm : Form
 	{
@@ -114,17 +114,17 @@ namespace ColorPicker
 			e.Graphics.DrawString(box.Text, box.Font, Brushes.Black, 5, 0);
 		}
 
-		private void btnPick_Click(object sender, EventArgs e)
-		{
-			PickerForm form = new();
-			form.FormClosed += Form_FormClosed;
-			WindowState = FormWindowState.Minimized;
-			form.ShowDialog();
-		}
-
 		private void Form_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			this.WindowState = FormWindowState.Normal;
+		}
+
+		private void btnPicker_Click(object sender, EventArgs e)
+		{
+			PickerForm form = new PickerForm();
+			form.FormClosed += Form_FormClosed;
+			WindowState = FormWindowState.Minimized;
+			form.ShowDialog();
 		}
 		#endregion
 

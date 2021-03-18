@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColorPicker", "ColorPicker\ColorPicker.csproj", "{D97D8716-E236-47C0-9F11-F3B543821CB3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColorLib", "ColorLib\ColorLib.csproj", "{B8789A95-0969-47AE-9721-97A17892EE2B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HookLib", "HookLib\HookLib.csproj", "{47500E8D-C044-44D7-B82A-3F3A7FF0A5B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorPicker2", "ColorPicker2\ColorPicker2.csproj", "{AC1C34CD-7CE1-4318-AF0F-CCB41862BE95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorLib", "ColorLib\ColorLib.csproj", "{8F06C5EA-4782-458A-A7E3-69C27CD9CC29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +21,18 @@ Global
 		{D97D8716-E236-47C0-9F11-F3B543821CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D97D8716-E236-47C0-9F11-F3B543821CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D97D8716-E236-47C0-9F11-F3B543821CB3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B8789A95-0969-47AE-9721-97A17892EE2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8789A95-0969-47AE-9721-97A17892EE2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8789A95-0969-47AE-9721-97A17892EE2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8789A95-0969-47AE-9721-97A17892EE2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{47500E8D-C044-44D7-B82A-3F3A7FF0A5B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{47500E8D-C044-44D7-B82A-3F3A7FF0A5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47500E8D-C044-44D7-B82A-3F3A7FF0A5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47500E8D-C044-44D7-B82A-3F3A7FF0A5B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC1C34CD-7CE1-4318-AF0F-CCB41862BE95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC1C34CD-7CE1-4318-AF0F-CCB41862BE95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC1C34CD-7CE1-4318-AF0F-CCB41862BE95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC1C34CD-7CE1-4318-AF0F-CCB41862BE95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F06C5EA-4782-458A-A7E3-69C27CD9CC29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F06C5EA-4782-458A-A7E3-69C27CD9CC29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F06C5EA-4782-458A-A7E3-69C27CD9CC29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F06C5EA-4782-458A-A7E3-69C27CD9CC29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

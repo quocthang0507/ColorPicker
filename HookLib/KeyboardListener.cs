@@ -26,7 +26,7 @@ namespace HookLib
 		/// </summary>
 		public KeyboardListener()
 		{
-			hookedLowLevelKeyboardProc = (InterceptKeys.LowLevelKeyboardProc)LowLevelKeyboardProc;
+			hookedLowLevelKeyboardProc = LowLevelKeyboardProc;
 			hookId = InterceptKeys.SetHook(hookedLowLevelKeyboardProc);
 			hookedKeyboardCallbackAsync = new KeyboardCallbackAsync(KeyboardListener_KeyboardCallbackAsync);
 		}
@@ -43,7 +43,7 @@ namespace HookLib
 		/// <summary>
 		/// Hook ID
 		/// </summary>
-		private IntPtr hookId = IntPtr.Zero;
+		private readonly IntPtr hookId = IntPtr.Zero;
 
 		/// <summary>
 		/// Asynchronous callback hook
@@ -75,12 +75,12 @@ namespace HookLib
 		/// <summary>
 		/// Event to be invoked asynchronously (BeginInvoke) each time key is pressed
 		/// </summary>
-		private KeyboardCallbackAsync hookedKeyboardCallbackAsync;
+		private readonly KeyboardCallbackAsync hookedKeyboardCallbackAsync;
 
 		/// <summary>
 		/// Contains the hooked callback in runtime
 		/// </summary>
-		private InterceptKeys.LowLevelKeyboardProc hookedLowLevelKeyboardProc;
+		private readonly InterceptKeys.LowLevelKeyboardProc hookedLowLevelKeyboardProc;
 
 		/// <summary>
 		/// HookCallbackAsync procedure that calls accordingly the KeyDown or KeyUp events

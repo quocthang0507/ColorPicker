@@ -1,5 +1,5 @@
 ﻿
-namespace ColorPicker
+namespace ColorPicker2
 {
 	partial class MainForm
 	{
@@ -99,7 +99,7 @@ namespace ColorPicker
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.lbxColors = new System.Windows.Forms.ListBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.btnPick = new System.Windows.Forms.Button();
+			this.btnPicker = new System.Windows.Forms.Button();
 			this.btnCopy = new System.Windows.Forms.Button();
 			this.tableMain.SuspendLayout();
 			this.tableColorSystems.SuspendLayout();
@@ -440,9 +440,9 @@ namespace ColorPicker
 			// tableCMYK
 			// 
 			this.tableCMYK.ColumnCount = 3;
-			this.tableCMYK.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-			this.tableCMYK.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.25208F));
-			this.tableCMYK.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.74792F));
+			this.tableCMYK.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+			this.tableCMYK.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableCMYK.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableCMYK.Controls.Add(this.tbxCMYblacK, 2, 3);
 			this.tableCMYK.Controls.Add(this.trackCMYblacK, 1, 3);
 			this.tableCMYK.Controls.Add(this.label8, 0, 3);
@@ -469,9 +469,9 @@ namespace ColorPicker
 			// tbxCMYblacK
 			// 
 			this.tbxCMYblacK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbxCMYblacK.Location = new System.Drawing.Point(148, 160);
+			this.tbxCMYblacK.Location = new System.Drawing.Point(150, 160);
 			this.tbxCMYblacK.Name = "tbxCMYblacK";
-			this.tbxCMYblacK.Size = new System.Drawing.Size(32, 23);
+			this.tbxCMYblacK.Size = new System.Drawing.Size(30, 23);
 			this.tbxCMYblacK.TabIndex = 22;
 			this.tbxCMYblacK.Text = "0";
 			this.tbxCMYblacK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -479,10 +479,10 @@ namespace ColorPicker
 			// trackCMYblacK
 			// 
 			this.trackCMYblacK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.trackCMYblacK.Location = new System.Drawing.Point(63, 150);
+			this.trackCMYblacK.Location = new System.Drawing.Point(68, 150);
 			this.trackCMYblacK.Maximum = 100;
 			this.trackCMYblacK.Name = "trackCMYblacK";
-			this.trackCMYblacK.Size = new System.Drawing.Size(79, 43);
+			this.trackCMYblacK.Size = new System.Drawing.Size(76, 43);
 			this.trackCMYblacK.TabIndex = 21;
 			// 
 			// label8
@@ -491,7 +491,7 @@ namespace ColorPicker
 			this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label8.Location = new System.Drawing.Point(3, 147);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(54, 49);
+			this.label8.Size = new System.Drawing.Size(59, 49);
 			this.label8.TabIndex = 7;
 			this.label8.Text = "Blac&k (0-100%)";
 			this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -502,7 +502,7 @@ namespace ColorPicker
 			this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label9.Location = new System.Drawing.Point(3, 0);
 			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(54, 49);
+			this.label9.Size = new System.Drawing.Size(59, 49);
 			this.label9.TabIndex = 0;
 			this.label9.Text = "&Cyan (0-100%)";
 			this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -513,7 +513,7 @@ namespace ColorPicker
 			this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label10.Location = new System.Drawing.Point(3, 49);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(54, 49);
+			this.label10.Size = new System.Drawing.Size(59, 49);
 			this.label10.TabIndex = 1;
 			this.label10.Text = "&Magenta (0-100%)";
 			this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -524,7 +524,7 @@ namespace ColorPicker
 			this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label11.Location = new System.Drawing.Point(3, 98);
 			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(54, 49);
+			this.label11.Size = new System.Drawing.Size(59, 49);
 			this.label11.TabIndex = 2;
 			this.label11.Text = "&Yellow (0-100%)";
 			this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -532,9 +532,9 @@ namespace ColorPicker
 			// tbxCyanMYK
 			// 
 			this.tbxCyanMYK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbxCyanMYK.Location = new System.Drawing.Point(148, 13);
+			this.tbxCyanMYK.Location = new System.Drawing.Point(150, 13);
 			this.tbxCyanMYK.Name = "tbxCyanMYK";
-			this.tbxCyanMYK.Size = new System.Drawing.Size(32, 23);
+			this.tbxCyanMYK.Size = new System.Drawing.Size(30, 23);
 			this.tbxCyanMYK.TabIndex = 16;
 			this.tbxCyanMYK.Text = "0";
 			this.tbxCyanMYK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -542,9 +542,9 @@ namespace ColorPicker
 			// tbxCMagentaYK
 			// 
 			this.tbxCMagentaYK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbxCMagentaYK.Location = new System.Drawing.Point(148, 62);
+			this.tbxCMagentaYK.Location = new System.Drawing.Point(150, 62);
 			this.tbxCMagentaYK.Name = "tbxCMagentaYK";
-			this.tbxCMagentaYK.Size = new System.Drawing.Size(32, 23);
+			this.tbxCMagentaYK.Size = new System.Drawing.Size(30, 23);
 			this.tbxCMagentaYK.TabIndex = 18;
 			this.tbxCMagentaYK.Text = "0";
 			this.tbxCMagentaYK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -552,9 +552,9 @@ namespace ColorPicker
 			// tbxCMYellowK
 			// 
 			this.tbxCMYellowK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbxCMYellowK.Location = new System.Drawing.Point(148, 111);
+			this.tbxCMYellowK.Location = new System.Drawing.Point(150, 111);
 			this.tbxCMYellowK.Name = "tbxCMYellowK";
-			this.tbxCMYellowK.Size = new System.Drawing.Size(32, 23);
+			this.tbxCMYellowK.Size = new System.Drawing.Size(30, 23);
 			this.tbxCMYellowK.TabIndex = 20;
 			this.tbxCMYellowK.Text = "0";
 			this.tbxCMYellowK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -562,28 +562,28 @@ namespace ColorPicker
 			// trackCyanMYK
 			// 
 			this.trackCyanMYK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.trackCyanMYK.Location = new System.Drawing.Point(63, 3);
+			this.trackCyanMYK.Location = new System.Drawing.Point(68, 3);
 			this.trackCyanMYK.Maximum = 100;
 			this.trackCyanMYK.Name = "trackCyanMYK";
-			this.trackCyanMYK.Size = new System.Drawing.Size(79, 43);
+			this.trackCyanMYK.Size = new System.Drawing.Size(76, 43);
 			this.trackCyanMYK.TabIndex = 15;
 			// 
 			// trackCMagentaYK
 			// 
 			this.trackCMagentaYK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.trackCMagentaYK.Location = new System.Drawing.Point(63, 52);
+			this.trackCMagentaYK.Location = new System.Drawing.Point(68, 52);
 			this.trackCMagentaYK.Maximum = 100;
 			this.trackCMagentaYK.Name = "trackCMagentaYK";
-			this.trackCMagentaYK.Size = new System.Drawing.Size(79, 43);
+			this.trackCMagentaYK.Size = new System.Drawing.Size(76, 43);
 			this.trackCMagentaYK.TabIndex = 17;
 			// 
 			// trackCMYellowK
 			// 
 			this.trackCMYellowK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.trackCMYellowK.Location = new System.Drawing.Point(63, 101);
+			this.trackCMYellowK.Location = new System.Drawing.Point(68, 101);
 			this.trackCMYellowK.Maximum = 100;
 			this.trackCMYellowK.Name = "trackCMYellowK";
-			this.trackCMYellowK.Size = new System.Drawing.Size(79, 43);
+			this.trackCMYellowK.Size = new System.Drawing.Size(76, 43);
 			this.trackCMYellowK.TabIndex = 19;
 			// 
 			// gbxRGBA
@@ -602,8 +602,8 @@ namespace ColorPicker
 			// 
 			this.tableRGBA.ColumnCount = 3;
 			this.tableRGBA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-			this.tableRGBA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.56757F));
-			this.tableRGBA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.43243F));
+			this.tableRGBA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableRGBA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableRGBA.Controls.Add(this.tbxRGBAlpha, 2, 3);
 			this.tableRGBA.Controls.Add(this.trackRGBAlpha, 1, 3);
 			this.tableRGBA.Controls.Add(this.label7, 0, 3);
@@ -630,9 +630,9 @@ namespace ColorPicker
 			// tbxRGBAlpha
 			// 
 			this.tbxRGBAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbxRGBAlpha.Location = new System.Drawing.Point(146, 160);
+			this.tbxRGBAlpha.Location = new System.Drawing.Point(145, 160);
 			this.tbxRGBAlpha.Name = "tbxRGBAlpha";
-			this.tbxRGBAlpha.Size = new System.Drawing.Size(34, 23);
+			this.tbxRGBAlpha.Size = new System.Drawing.Size(35, 23);
 			this.tbxRGBAlpha.TabIndex = 8;
 			this.tbxRGBAlpha.Text = "0";
 			this.tbxRGBAlpha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -643,7 +643,7 @@ namespace ColorPicker
 			this.trackRGBAlpha.Location = new System.Drawing.Point(63, 150);
 			this.trackRGBAlpha.Maximum = 100;
 			this.trackRGBAlpha.Name = "trackRGBAlpha";
-			this.trackRGBAlpha.Size = new System.Drawing.Size(77, 43);
+			this.trackRGBAlpha.Size = new System.Drawing.Size(76, 43);
 			this.trackRGBAlpha.TabIndex = 7;
 			// 
 			// label7
@@ -693,9 +693,9 @@ namespace ColorPicker
 			// tbxRedGBA
 			// 
 			this.tbxRedGBA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbxRedGBA.Location = new System.Drawing.Point(146, 13);
+			this.tbxRedGBA.Location = new System.Drawing.Point(145, 13);
 			this.tbxRedGBA.Name = "tbxRedGBA";
-			this.tbxRedGBA.Size = new System.Drawing.Size(34, 23);
+			this.tbxRedGBA.Size = new System.Drawing.Size(35, 23);
 			this.tbxRedGBA.TabIndex = 2;
 			this.tbxRedGBA.Text = "0";
 			this.tbxRedGBA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -703,9 +703,9 @@ namespace ColorPicker
 			// tbxRGreenBA
 			// 
 			this.tbxRGreenBA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbxRGreenBA.Location = new System.Drawing.Point(146, 62);
+			this.tbxRGreenBA.Location = new System.Drawing.Point(145, 62);
 			this.tbxRGreenBA.Name = "tbxRGreenBA";
-			this.tbxRGreenBA.Size = new System.Drawing.Size(34, 23);
+			this.tbxRGreenBA.Size = new System.Drawing.Size(35, 23);
 			this.tbxRGreenBA.TabIndex = 4;
 			this.tbxRGreenBA.Text = "0";
 			this.tbxRGreenBA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -713,9 +713,9 @@ namespace ColorPicker
 			// tbxRGBlueA
 			// 
 			this.tbxRGBlueA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbxRGBlueA.Location = new System.Drawing.Point(146, 111);
+			this.tbxRGBlueA.Location = new System.Drawing.Point(145, 111);
 			this.tbxRGBlueA.Name = "tbxRGBlueA";
-			this.tbxRGBlueA.Size = new System.Drawing.Size(34, 23);
+			this.tbxRGBlueA.Size = new System.Drawing.Size(35, 23);
 			this.tbxRGBlueA.TabIndex = 6;
 			this.tbxRGBlueA.Text = "0";
 			this.tbxRGBlueA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -726,7 +726,7 @@ namespace ColorPicker
 			this.trackRedGBA.Location = new System.Drawing.Point(63, 3);
 			this.trackRedGBA.Maximum = 255;
 			this.trackRedGBA.Name = "trackRedGBA";
-			this.trackRedGBA.Size = new System.Drawing.Size(77, 43);
+			this.trackRedGBA.Size = new System.Drawing.Size(76, 43);
 			this.trackRedGBA.TabIndex = 1;
 			// 
 			// trackRGreenBA
@@ -735,7 +735,7 @@ namespace ColorPicker
 			this.trackRGreenBA.Location = new System.Drawing.Point(63, 52);
 			this.trackRGreenBA.Maximum = 255;
 			this.trackRGreenBA.Name = "trackRGreenBA";
-			this.trackRGreenBA.Size = new System.Drawing.Size(77, 43);
+			this.trackRGreenBA.Size = new System.Drawing.Size(76, 43);
 			this.trackRGreenBA.TabIndex = 3;
 			// 
 			// trackRGBlueA
@@ -744,7 +744,7 @@ namespace ColorPicker
 			this.trackRGBlueA.Location = new System.Drawing.Point(63, 101);
 			this.trackRGBlueA.Maximum = 255;
 			this.trackRGBlueA.Name = "trackRGBlueA";
-			this.trackRGBlueA.Size = new System.Drawing.Size(77, 43);
+			this.trackRGBlueA.Size = new System.Drawing.Size(76, 43);
 			this.trackRGBlueA.TabIndex = 5;
 			// 
 			// gbxRGB
@@ -889,7 +889,7 @@ namespace ColorPicker
 			this.tableTools.Name = "tableTools";
 			this.tableTools.RowCount = 1;
 			this.tableTools.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableTools.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 225F));
+			this.tableTools.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 224F));
 			this.tableTools.Size = new System.Drawing.Size(978, 225);
 			this.tableTools.TabIndex = 1;
 			// 
@@ -907,7 +907,7 @@ namespace ColorPicker
 			// lblHexColor
 			// 
 			this.lblHexColor.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lblHexColor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.lblHexColor.Font = new System.Drawing.Font("Segoe UI", 20F);
 			this.lblHexColor.Location = new System.Drawing.Point(3, 19);
 			this.lblHexColor.Name = "lblHexColor";
 			this.lblHexColor.Size = new System.Drawing.Size(314, 197);
@@ -941,7 +941,7 @@ namespace ColorPicker
 			// 
 			// groupBox3
 			// 
-			this.groupBox3.Controls.Add(this.btnPick);
+			this.groupBox3.Controls.Add(this.btnPicker);
 			this.groupBox3.Controls.Add(this.btnCopy);
 			this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBox3.Location = new System.Drawing.Point(655, 3);
@@ -951,20 +951,20 @@ namespace ColorPicker
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Utility";
 			// 
-			// btnPick
+			// btnPicker
 			// 
-			this.btnPick.BackColor = System.Drawing.Color.Transparent;
-			this.btnPick.BackgroundImage = global::ColorPicker.Properties.Resources.color_picker_png;
-			this.btnPick.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.btnPick.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnPick.FlatAppearance.BorderSize = 0;
-			this.btnPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPick.Location = new System.Drawing.Point(123, 87);
-			this.btnPick.Name = "btnPick";
-			this.btnPick.Size = new System.Drawing.Size(75, 75);
-			this.btnPick.TabIndex = 37;
-			this.btnPick.UseVisualStyleBackColor = false;
-			this.btnPick.Click += new System.EventHandler(this.btnPick_Click);
+			this.btnPicker.BackColor = System.Drawing.Color.Transparent;
+			this.btnPicker.BackgroundImage = global::ColorPicker2.Properties.Resources.picker_png;
+			this.btnPicker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnPicker.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnPicker.FlatAppearance.BorderSize = 0;
+			this.btnPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnPicker.Location = new System.Drawing.Point(123, 87);
+			this.btnPicker.Name = "btnPicker";
+			this.btnPicker.Size = new System.Drawing.Size(75, 75);
+			this.btnPicker.TabIndex = 37;
+			this.btnPicker.UseVisualStyleBackColor = false;
+			this.btnPicker.Click += new System.EventHandler(this.btnPicker_Click);
 			// 
 			// btnCopy
 			// 
@@ -982,6 +982,7 @@ namespace ColorPicker
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(984, 461);
 			this.Controls.Add(this.tableMain);
+			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.HelpButton = true;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
@@ -1104,7 +1105,7 @@ namespace ColorPicker
 		private System.Windows.Forms.ListBox lbxColors;
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.Button btnCopy;
-		private System.Windows.Forms.Button btnPick;
+		private System.Windows.Forms.Button btnPicker;
 	}
 }
 

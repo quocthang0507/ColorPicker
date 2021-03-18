@@ -1,7 +1,7 @@
 ﻿
-namespace ColorPicker
+namespace ColorPicker2
 {
-	partial class FloatingPickerForm
+	partial class PickerForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -30,7 +30,7 @@ namespace ColorPicker
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FloatingPickerForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PickerForm));
 			this.panelColor = new System.Windows.Forms.Panel();
 			this.lblHexColor = new System.Windows.Forms.Label();
 			this.mouseMoveTimer = new System.Windows.Forms.Timer(this.components);
@@ -59,7 +59,7 @@ namespace ColorPicker
 			this.mouseMoveTimer.Interval = 50;
 			this.mouseMoveTimer.Tick += new System.EventHandler(this.mouseMoveTimer_Tick);
 			// 
-			// FloatingPickerForm
+			// PickerForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -67,18 +67,18 @@ namespace ColorPicker
 			this.ControlBox = false;
 			this.Controls.Add(this.lblHexColor);
 			this.Controls.Add(this.panelColor);
-			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "FloatingPickerForm";
+			this.Name = "PickerForm";
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.TopMost = true;
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FloatingPickerForm_FormClosing);
-			this.Load += new System.EventHandler(this.FloatingPickerForm_Load);
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PickerForm_FormClosing);
+			this.Load += new System.EventHandler(this.PickerForm_Load);
 			this.ResumeLayout(false);
 
 		}

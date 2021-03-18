@@ -12,7 +12,7 @@ namespace HookLib
 		public MyDelegate UpdateColor { get; set; }
 		public delegate void MyDelegate();
 
-		private KeyboardListener keyboardListener;
+		private readonly KeyboardListener keyboardListener;
 		private int vkcode;
 
 		public UsingHookKey()
