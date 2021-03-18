@@ -33,7 +33,7 @@ namespace ColorPicker2
 			DesktopLocation = GetNewLocation(Cursor.Position);
 
 			// Lấy pixel và mã màu
-			pixelColor = Picker2.GetColorAt(Cursor.Position);
+			pixelColor = Picker.GetPixelColor(Cursor.Position);
 			panelColor.BackColor = pixelColor;
 
 			lblHexColor.Text = "#" + new RGB(pixelColor);
@@ -45,18 +45,22 @@ namespace ColorPicker2
 			MainForm.Instance.ReceiveColor(pixelColor);
 		}
 
-		private Point GetNewLocation(Point oldPoint)
+		private Point GetNewLocation(Point oldLocation)
 		{
-			Point A = Point.Add(oldPoint, new Size(PWidth, PHeight));
+			Point A = Point.Add(oldLocation, new Size(PWidth, PHeight));
 			// Gọi A, B, C và D là 4 góc của form, bắt đầu từ A(0, 0) và đi theo chiều kim đồng hồ
 			Point B = new Point(A.X + Width, A.Y);
 			Point C = new Point(B.X, B.Y + Height);
 			Point D = new Point(A.X, A.Y + Height);
 			// Xác định 4 điểm có nằm trong màn hình không
 			Rectangle screen = Screen.PrimaryScreen.Bounds;
-			if (!screen.Contains(A) || !screen.Contains(B) || !screen.Contains(C) || !screen.Contains(D))
+			if (!screen.Contains(B) && !screen.Contains(C))
 			{
-				A = Point.Subtract(oldPoint, new Size(Width + PWidth, Height + PHeight));
+				A = Point.Subtract(oldLocation, new Size(Width + PWidth, Height + PHeight));
+			}
+			else if (!screen.Contains(C) && !screen.Contains(D))
+			{
+				A = Point.Subtract(oldLocation, new Size(Width + PWidth, 0));
 			}
 			return A;
 		}

@@ -17,7 +17,7 @@ namespace ColorPicker
 			// Picker2.GetCursorPos(ref cursor);
 
 			// var pixelColor = Picker2.GetColorAt(cursor);
-			var pixelColor = Picker2.GetColorAt(Cursor.Position);
+			var pixelColor = Picker.GetColorAt(Cursor.Position);
 			BackColor = pixelColor;
 
 			lblHexColor.Text = "#" + new RGB(pixelColor);

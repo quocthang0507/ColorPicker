@@ -27,10 +27,9 @@ namespace ColorLib
 			ReleaseDC(desk, dc);
 			return Color.FromArgb(255, (a >> 0) & 0xff, (a >> 8) & 0xff, (a >> 16) & 0xff);
 		}
-	}
 
-	public class Picker2
-	{
+		//=====================================================//
+
 		[DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
 		private static extern int BitBlt(IntPtr hDC, int x, int y, int nWidth, int nHeight, IntPtr hSrcDC, int xSrc, int ySrc, int dwRop);
 		private static readonly Bitmap screenPixel = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
@@ -54,5 +53,25 @@ namespace ColorLib
 
 			return screenPixel.GetPixel(0, 0);
 		}
+
+		//=====================================================//
+
+		/// <summary>
+		/// https://github.com/microsoft/PowerToys/blob/master/src/modules/colorPicker/ColorPickerUI/Mouse/MouseInfoProvider.cs
+		/// </summary>
+		/// <param name="mousePosition"></param>
+		/// <returns></returns>
+		public static Color GetPixelColor(Point mousePosition)
+		{
+			var rect = new Rectangle(mousePosition.X, mousePosition.Y, 1, 1);
+			using (var bmp = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb))
+			{
+				var g = Graphics.FromImage(bmp);
+				g.CopyFromScreen(rect.Left, rect.Top, 0, 0, bmp.Size, CopyPixelOperation.SourceCopy);
+
+				return bmp.GetPixel(0, 0);
+			}
+		}
+
 	}
 }
