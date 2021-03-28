@@ -117,6 +117,7 @@ namespace ColorPicker2
 		private void Form_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			this.WindowState = FormWindowState.Normal;
+			Activate();
 		}
 
 		private void btnPicker_Click(object sender, EventArgs e)
